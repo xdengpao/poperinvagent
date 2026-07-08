@@ -1,0 +1,199 @@
+# 市况分级器规则库（任务 19，需求 R11；框架 v2.0 §6.4；规格书 §6.4〔校验 C-17〕）
+#
+# 信号池 10 项：框架 6.3 五项在指数层面的对应项（①-⑤）+ 宏观/流动性五项（⑥-⑩）；
+# 云厂商 capex 指引下修单列最高权重（不计入 10 项计数，命中即整链警报）。
+# 每项登记：数据源适配器名（adapter）、阈值参数、检测频率（frequency）。
+# 框架未给出数值的阈值以工程默认值登记（engineering_default: true），
+# 保守方向一律为"更早命中"（收紧市况判定，不放宽）。
+rules:
+  # —— 信号池 10 项检测器（R11.1）——
+  - id: REGIME.SIG.INDEX_PS_PEG
+    source: "F 6.4 信号池（6.3① 指数级对应）；规格书 §6.4①"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "更早命中"
+    params:
+      adapter: ADP-INDEX
+      frequency: weekly            # D5 指数估值分位，周度核对
+      ps_gt: 30                    # 指数级 PS > 30 倍（F 6.3① 指数化）
+      peg_gt: 3                    # 或 PEG > 3
+      persist_quarters: 1          # 持续一个季度
+  - id: REGIME.SIG.INDEX_TAM_IMPLIED
+    source: "F 6.4 信号池（6.3② 指数级对应）；规格书 §6.4②（D7+计算）"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "更早命中"
+    params:
+      adapter: ADP-INDUSTRY
+      frequency: monthly           # D7 产业高频月度快照 + 计算
+      implied_tam_share_gt: 0.50   # 指数市值反推需占 TAM 份额 > 50% 才能合理化
+  - id: REGIME.SIG.INDEX_GAIN_VS_REVISION
+    source: "F 6.4 信号池（6.3③ 指数级对应）；规格书 §6.4③"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "更早命中"
+    params:
+      adapter: ADP-INDEX+ADP-CONSENSUS
+      frequency: monthly           # 一致预期月更（D3），随更新核对
+      window_months: 12            # 12 个月指数涨幅
+      gain_minus_revision_pp_ge: 50  # 超盈利上修幅度 ≥50pp
+  - id: REGIME.SIG.RESEARCH_CONSENSUS_EXTREME
+    source: "F 6.4 信号池（6.3④ 指数级对应）；规格书 §6.4④（D9）"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "更早命中"
+    params:
+      adapter: ADP-AKSHARE+ADP-CONSENSUS   # D9 拥挤度辅助（研报密度/评级分布）
+      frequency: monthly           # D9 月度（数据源选型方案 O-01）
+      density_mom_multiple_ge: 2.0 # 研报密度环比翻倍
+      consensus_rating: buy        # 且评级一致"买入"极值
+  - id: REGIME.SIG.IPO_PLACEMENT_SURGE
+    source: "F 6.4 信号池（6.3⑤ 指数级对应）；规格书 §6.4⑤（D4 事件聚合）"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "更早命中"
+    params:
+      adapter: ADP-EDGAR+ADP-TUSHARE       # D4 披露事件聚合（美股/A 股双市场）
+      frequency: monthly           # 事件月度聚合
+      rolling_months: 3            # 滚动 3 个月 IPO+定增募资额
+      volume_pctile_ge: 95         # 处历史 ≥95 分位（井喷）
+      engineering_default: true    # 框架仅定性"井喷"，分位为工程默认
+  - id: REGIME.SIG.REAL_RATE_SPIKE
+    source: "F 6.4 信号池：实际利率快速上行（年化 >100bp）；规格书 §6.4⑥"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "更早命中"
+    params:
+      adapter: ADP-FRED            # D8 宏观（DFII10 实际利率）
+      frequency: weekly
+      rise_bp_annualized_gt: 100   # 年化上行 >100bp（框架显式量化）
+  - id: REGIME.SIG.CREDIT_SPREAD_WIDENING
+    source: "F 6.4 信号池：信用利差走阔；规格书 §6.4⑦"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "更早命中"
+    params:
+      adapter: ADP-FRED            # D8 宏观（HY OAS 等）
+      frequency: weekly
+      widening_bp_ge: 100          # 滚动窗口内走阔 ≥100bp
+      window_months: 3
+      engineering_default: true    # 框架仅定性"走阔"，数值为工程默认
+  - id: REGIME.SIG.CB_TIGHTENING
+    source: "F 6.4 信号池：央行明确转向收紧；规格书 §6.4⑧（事件规则表+代理）"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "更早命中"
+    params:
+      adapter: EVENT-RULES+AGENT   # 事件规则表匹配 + LLM 代理取证（R16 任务③）
+      frequency: event             # 事件驱动 + 代理周扫兜底
+      event_classes: [rate_hike_cycle_start, qt_announcement, explicit_tightening_statement]
+      require_official_source: true  # 判定须官方原文佐证（R16.5）
+  - id: REGIME.SIG.BREADTH_DETERIORATION
+    source: "F 6.4 信号池：指数上涨但广度恶化；规格书 §6.4⑨（口径：新高新低比）"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "更早命中"
+    params:
+      adapter: ADP-AKSHARE         # 两市涨跌/新高新低家数
+      frequency: daily_close       # 日收盘核对
+      index_uptrend_required: true # 指数处上行（背离前提）
+      new_high_low_ratio_lt: 1.0   # 新高/新低家数比 <1
+      persist_weeks: 4             # 背离持续 4 周
+      engineering_default: true    # 框架仅定性"广度恶化"，口径与持续期为工程默认
+  - id: REGIME.SIG.MARGIN_DEBT_PCTILE
+    source: "F 6.4 信号池：融资余额/保证金债务处历史 95% 分位以上；规格书 §6.4⑩"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "更早命中"
+    params:
+      adapter: ADP-TUSHARE+ADP-AKSHARE  # 两融余额（A 股）；美股保证金债务（FINRA 月报归档）
+      frequency: weekly
+      pctile_ge: 95                # ≥ 历史 95% 分位（框架显式量化）
+
+  # —— capex 下修主闸门（单列最高权重，R11.1）——
+  - id: REGIME.CAPEX.DOWNGRADE_GATE
+    source: "F 6.4：头部云厂商资本开支指引下修（单列最高权重，命中即整链警报）；规格书 §6.4"
+    type: guard
+    effect_level: 3
+    conservative_direction: "命中即整链警报"
+    params:
+      adapter: ADP-EDGAR+AGENT     # 财报解析事件（指引下修判定走代理任务②）
+      frequency: event             # 财报事件驱动
+      weight: highest              # 单列最高权重，不计入 10 项常规计数
+      full_chain_alert: true       # 命中即整链警报（无论级别是否变更）
+      mania_with_additional_hits: 2  # capex 下修 + 任意 2 项 → 狂热
+
+  # —— 级别判定（R11.2）——
+  - id: REGIME.LEVEL.CLASSIFY
+    source: "F 6.4 市况分级表；R11.2；设计方案 6.4"
+    type: classification
+    effect_level: 3
+    conservative_direction: "缺口不计命中、缺回撤数据不判冰点（不放宽）"
+    params:
+      normal_hits_max: 1           # 常态：命中 ≤1 项
+      overheat_hits_min: 2         # 过热：命中 2-4 项
+      overheat_hits_max: 4
+      mania_hits_min: 5            # 狂热：命中 ≥5 项，或 capex 下修+任意 2 项
+      freeze_drawdown_le: -0.30    # 冰点：指数自高点 -30% 以上
+      freeze_hits_max: 1           # 且信号池命中 ≤1 项
+      gap_counts_as_hit: false     # 缺口信号不计命中并产 Gap（A2）
+
+  # —— 各档动作（R11.3）——
+  - id: REGIME.ACTION.NORMAL
+    source: "F 6.4 常态行；F 2.4（常态/冰点恢复基准预期）；F 6.1 现金常态档"
+    type: trigger-action
+    effect_level: 3
+    params:
+      level: normal
+      normal_operation: true
+      cash_floor_pct: {steady: 10, aggressive: 10, high_risk: 15}  # F 6.1 常态档（分型）
+      annual_expectation_band: baseline   # 恢复基准预期
+  - id: REGIME.ACTION.OVERHEAT
+    source: "F 6.4 过热行；R11.3；规格书 §6.4（年度预期档输出〔校验 F-03〕）"
+    type: trigger-action
+    effect_level: 3
+    params:
+      level: overheat
+      cash_floor_pct: 30                  # 现金 ≥30%（优先于结构表，F 6.1）
+      annual_expectation_band_pct: [0, 15]  # 年度预期降至 0-15%
+      new_position_double_review: true    # 新开仓意见双重复核
+  - id: REGIME.ACTION.MANIA
+    source: "F 6.4 狂热行；R11.3；规格书 §6.4（全持仓分批兑现评估任务〔校验 F-09〕）"
+    type: trigger-action
+    effect_level: 3
+    params:
+      level: mania
+      cash_band_pct: [40, 50]             # 现金 40-50%
+      suspend_new_positions: true         # 暂停新开仓推荐（S5 守卫：市况非狂热）
+      staged_exit_review_all_holdings: true  # 对全部持仓生成分批兑现评估任务
+      annual_expectation_band_pct: [0, 15]   # 过热档预期约束不因升档放宽（取严，R5.2）
+  - id: REGIME.ACTION.FREEZE
+    source: "F 6.4 冰点行（恐慌错杀是主要买点来源）；F 2.4（恢复基准预期）；R11.3"
+    type: trigger-action
+    effect_level: 3
+    params:
+      level: freeze
+      intensified_scan: true              # 恢复/加密推荐扫描
+      scan_frequency: weekly              # 加密：月度扫描提频至周度（工程默认）
+      engineering_default: true
+      annual_expectation_band: baseline   # 常态/冰点恢复基准预期
+      cash_floor_pct: {steady: 10, aggressive: 10, high_risk: 15}  # 回到 F 6.1 常态档
+
+  # —— 缺口与未分类事件（R11.4 / A2）——
+  - id: REGIME.SIG.GAP_NO_HIT
+    source: "R2.6/A2 缺口协议；R11.2（缺口信号不计命中）"
+    type: guard
+    effect_level: 3
+    conservative_direction: "缺口不计命中且不静默（产 Gap）"
+    params:
+      on_gap: not_hit              # 数据缺口 → 该信号不计命中
+      register_gap: true           # 且必须登记缺口对象（零静默）
+  - id: REGIME.EVENT.UNCLASSIFIED
+    source: "R11.4；设计方案 O-04（黑天鹅事件类型未穷尽）"
+    type: guard
+    effect_level: 3
+    conservative_direction: "只可人工调严，不得自动动作"
+    params:
+      channel: O-04                # 未分类重大事件 → 人工裁决通道
+      auto_actions_forbidden: true # 不得触发任何自动动作
+      manual_adjust_direction: tighten_only  # 人工裁决只可调严不可放宽（设计方案 §限制条件）
