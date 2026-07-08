@@ -22,18 +22,32 @@
 | [docs/AI时代股票投资指导框架-v1.0.md](docs/AI时代股票投资指导框架-v1.0.md) | 框架 v1.0 原文（存档；v2.0 变更总览中逐条对照） |
 | [docs/框架问题审计登记表.md](docs/框架问题审计登记表.md) | 对 v1.0 的四路独立审计完整记录（117 条），v2.0 修复工作的依据 |
 
-## 代码实现（P0 进行中）
+## 代码实现（P0-P2 功能开发完成，296 测试全绿）
 
 ```
-src/invest_assistant/   分层包：core(Gap/Result 类型) rules(规则库+参数链) calendar
-                        data(质量/归一化/快照/适配器) analysis(S1/S2) audit(哈希链)
-fixtures/golden/        金标准 fixture（S1 两态/S2 候选池/S3 判定/归一化六案例）
-db/migrations/          PostgreSQL schema v1（32 表 + append-only 触发器）
-tests/                  金标准回归 + 单元测试（CI 合并阻断）
-scripts/                A3 交易代码白名单检查 + 业务时限口径 lint
+src/invest_assistant/
+  core/         Gap/Result 类型（A2 无数据不出结论）、可观测性（run_id 日志/指标告警）
+  rules/        规则库 YAML + 解释器 + 参数解析链（只可更严）+ 效力仲裁
+  calendar/     交易日历服务（沪深+美股、账务日拼合、时间量词三口径 Duration）
+  data/         质量管道/归一化引擎/快照/11 适配器/字段字典/源角色 FMP 切换
+  analysis/     S1 六因子 · S2 扫描 · S3 一票否决 · S4 八维评分三情景 · 市况分级 ·
+                持仓信号监测器 · 论点卡证伪状态机
+  risk/         联立校验 · 红线断言层 · 预期调节 · 回撤阶梯 · 批次纪律冷静期
+  opinion/      七类意见工厂 · M10 十项合规自检 · 质量校准 · 生命周期声明
+  orchestration/ 四层状态机 · 触发器总线 · 冻结×动作矩阵(A5) · 回流 · 调度器 · S8 守卫
+  agents/       LLM 取证代理子系统（防幻觉四段链、任务幂等、执行器）
+  audit/        审计哈希链 · 违规台账七类
+  ui/           FastAPI（签认/裁决队列、回执、连通性、S0 准入）· 强送达通知
+fixtures/golden/  金标准 fixture（S1 两态/S2 候选池/S3 判定/归一化六案例）+ 对抗样本
+db/migrations/    PostgreSQL schema v1（append-only 触发器实测拒改）
+tests/            296 测试：金标准回归 + 单元 + 端到端场景断言（CI 合并阻断）
+scripts/          A3 交易代码白名单 · 业务时限 lint · 连通性自检 · 恢复演练
 ```
 
-本地运行：`pip install -e ".[dev]" && pytest`。完整实施计划见 [specs/invest-assistant/tasks.md](specs/invest-assistant/tasks.md)。
+本地运行：`pip install -e ".[dev,app]" && pytest`。四道 CI 合并阻断闸门：
+金标准回归 + 端到端场景断言 + A3 无交易执行检查 + 业务时限口径 lint。
+剩余：真实数据源联测（需生产网络 + token）、IBKR 重授权后 S4/S5 实跑、P3 持续运营。
+完整实施计划见 [specs/invest-assistant/tasks.md](specs/invest-assistant/tasks.md)。
 
 ## 核心设计要点
 
