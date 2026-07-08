@@ -22,6 +22,19 @@
 | [docs/AI时代股票投资指导框架-v1.0.md](docs/AI时代股票投资指导框架-v1.0.md) | 框架 v1.0 原文（存档；v2.0 变更总览中逐条对照） |
 | [docs/框架问题审计登记表.md](docs/框架问题审计登记表.md) | 对 v1.0 的四路独立审计完整记录（117 条），v2.0 修复工作的依据 |
 
+## 代码实现（P0 进行中）
+
+```
+src/invest_assistant/   分层包：core(Gap/Result 类型) rules(规则库+参数链) calendar
+                        data(质量/归一化/快照/适配器) analysis(S1/S2) audit(哈希链)
+fixtures/golden/        金标准 fixture（S1 两态/S2 候选池/S3 判定/归一化六案例）
+db/migrations/          PostgreSQL schema v1（32 表 + append-only 触发器）
+tests/                  金标准回归 + 单元测试（CI 合并阻断）
+scripts/                A3 交易代码白名单检查 + 业务时限口径 lint
+```
+
+本地运行：`pip install -e ".[dev]" && pytest`。完整实施计划见 [specs/invest-assistant/tasks.md](specs/invest-assistant/tasks.md)。
+
 ## 核心设计要点
 
 - **规则可回溯，数据可验证**：一切推荐与意见 = 框架条文 + 带来源与日期的数据证据；无数据不出意见（宁缺毋滥）。

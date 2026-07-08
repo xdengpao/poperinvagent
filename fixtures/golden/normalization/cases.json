@@ -1,0 +1,112 @@
+{
+  "cases": [
+    {
+      "case": "KLA-split",
+      "transform": "split_adjustment",
+      "inputs": {
+        "split_ratio": "10:1",
+        "split_date": { "gap": true, "note": "拆股日期未见于报告与规格书" },
+        "unadjusted_pre_split_per_share_series": { "gap": true, "note": "拆股前未调整每股原始序列未见于报告" },
+        "adjusted_eps_3y": { "from": 24, "to": 30, "unit": "USD" },
+        "share_count_change_3y_pct": -11.7,
+        "cash_conversion_8q_avg": { "value": 0.98, "approx": true }
+      },
+      "expected": {
+        "per_share_series_comparable_after_adjustment": true,
+        "item5_verdict": "not_hit",
+        "basis": "拆股调整后口径下持续缩股 -11.7%、EPS $24→$30 增长——项 5 未命中；拆股不得被误判为增发稀释或每股指标断崖"
+      },
+      "notes": "数据粒度：3 年年度口径（EPS/股数变动）+ 8 季转化率均值（≈ 近似口径）。报告仅给出拆股调整后的可比序列；拆股比 10:1 取自规格书 FR-D-04 归一化引擎场景枚举（'拆股（KLA 10:1 型）'），拆股日期与拆股前原始值以 gap 登记。",
+      "provenance": "docs/智能投资助手-软件规格书-v1.0.md#3.2-FR-D-04；docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-KLAC 行"
+    },
+    {
+      "case": "AVGO-53wk",
+      "transform": "week53_fiscal_year_adjustment",
+      "inputs": {
+        "fiscal_calendar": "52/53 周财年（AVGO 型，FR-D-04 归一化对象）",
+        "week53_fiscal_years": { "gap": true, "note": "53 周落在哪个财年及周度收入明细未见于报告" },
+        "revenue_growth_fy23_to_fy25_multiple": 1.58,
+        "ar_growth_2y_multiple": 2.45,
+        "ar_factoring_single_quarter": { "value": 1750000000, "unit": "USD" },
+        "vmware_share_of_fy23_25_revenue_increment_pct": { "value": 64, "approx": true },
+        "net_margin_latest_half_year_pct": 40.1,
+        "net_margin_fy2023_pre_merger_pct": 39.3
+      },
+      "expected": {
+        "growth_comparison_basis": "53 周财年的同比增速须折算为可比周数口径后方可进入项 2/项 4 阈值判定",
+        "item4_verdict": "edge_not_hit",
+        "item4_basis": "VMware 并表约占 FY23→25 收入增量 64%（>50% 命中前半），但最新半年净利率 40.1% 已回升至并表前 FY2023 39.3% 之上——'利润率低于并表前'不成立，两条件为'且'关系故未命中",
+        "item2_verdict": "edge_monitoring"
+      },
+      "notes": "数据粒度：两年倍数（应收/收入）+ 半年度净利率 + 单季保理金额。报告只给出结论层级的比率与利润率，未给 53 周调整的分周明细，以 gap 登记；53 周财年场景本身取自规格书 FR-D-04 场景枚举。",
+      "provenance": "docs/智能投资助手-软件规格书-v1.0.md#3.2-FR-D-04；docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-AVGO 行"
+    },
+    {
+      "case": "ARM-semiannual-cf",
+      "transform": "adr_semiannual_cashflow",
+      "inputs": {
+        "disclosure_frequency": "半年（ADR/20-F 口径；期数按可得折算并标注，O-03）",
+        "cash_conversion_fy2025": 0.50,
+        "fy2025_low_driver": "IPO 税务代扣一次性",
+        "cash_conversion_fy2026": 1.69,
+        "semiannual_ocf_ni_detail": { "gap": true, "note": "各半年期 OCF/净利明细未见于报告，报告仅给年度转化率结论" }
+      },
+      "expected": {
+        "period_count_basis": "连续计数按可得半年期折算并标注，不虚构 8 个季度粒度",
+        "fy2025_below_0_7_treatment": "归因一次性项（IPO 税务代扣）并标记，不作为盈利质量恶化趋势证据",
+        "item2_cash_conversion_verdict": "not_hit",
+        "basis": "FY2025 转化率 0.50 系一次性归因，FY2026 回升 1.69"
+      },
+      "notes": "数据粒度：年度转化率（比率结论层级）。ADR 半年现金流披露频率差异按可得期数折算并标注的口径出自 S2 报告第七节（O-03）；FR-D-04 将 ADR 半年现金流（ARM/TSM 型）列为归一化对象。",
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-ARM 行；docs/S2-候选池-第1期-2026-07-07.md#七、下一步（ADR 折算口径）；docs/智能投资助手-软件规格书-v1.0.md#3.2-FR-D-04"
+    },
+    {
+      "case": "AMD-discontinued",
+      "transform": "discontinued_operations_exclusion",
+      "inputs": {
+        "discontinued_operation": "ZT（制造业务）列终止经营",
+        "treatment_in_report": "未计入持续经营收入",
+        "discontinued_revenue_amount": { "gap": true, "note": "ZT 制造业务收入金额未见于报告" }
+      },
+      "expected": {
+        "revenue_series_basis": "收入序列按持续经营口径剔除终止经营业务（AMD-ZT/SNPS-SIG 型）",
+        "item4_verdict": "not_hit",
+        "basis": "剔除终止经营后收入增长为内生"
+      },
+      "notes": "数据粒度：定性结论层级（报告仅给'列终止经营未计入持续收入（内生增长）'的处理结论，无金额明细）。规格书 FR-D-04 将终止经营剔除列为归一化对象并同时枚举 SNPS-SIG 同型场景，本案例以 AMD-ZT 实跑为准。",
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-AMD 行；docs/智能投资助手-软件规格书-v1.0.md#3.2-FR-D-04"
+    },
+    {
+      "case": "NVDA-oneoff",
+      "transform": "oneoff_item_flag",
+      "inputs": {
+        "oneoff_item": "对客户循环投资的单季股权收益",
+        "oneoff_gain": { "value": 15900000000, "unit": "USD" },
+        "quarter": { "gap": true, "note": "所在季度未见于报告（报告表述为'单季'）" },
+        "metrics_ex_oneoff_detail": { "gap": true, "note": "剔除该收益前后的净利/转化率明细未见于报告" }
+      },
+      "expected": {
+        "flagging": "标记为一次性项（NVDA $15.9B 股权收益型）；净利/现金转化率/利润率等入模指标须剔除或标注后使用",
+        "s3_effect": "不改变 NVDA 其余四项全绿的判定；与前三客户占应收 64% 一并转 S4 论点卡风险项"
+      },
+      "notes": "数据粒度：单季收益总额（结论层级）。报告在 D-1（NVDA 待裁决）行记录该事项并转 S4，未给剔除前后指标明细，以 gap 登记。",
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-1 行；docs/智能投资助手-软件规格书-v1.0.md#3.2-FR-D-04"
+    },
+    {
+      "case": "MRVL-negative-ni",
+      "transform": "negative_ni_cash_conversion_rule",
+      "inputs": {
+        "ocf_8q_sign": "全正",
+        "ni_negative_periods": "FY24/25 GAAP 亏损（摊销/重组非现金所致）",
+        "quarterly_ocf_ni_values": { "gap": true, "note": "各季 OCF/净利数值未见于报告，报告仅给符号级结论" }
+      },
+      "expected": {
+        "rule": "负净利期该期子项判定 = OCF>0 → 通过；OCF≤0 → 计一次'失败期'进入连续计数（FR-D-04〔校验 C-17〕，框架 3.2-2 落地口径）",
+        "item2_cash_conversion_verdict": "not_hit",
+        "basis": "8 季 OCF 全正 → 负净利各期均判通过、无失败期，现金转化健康"
+      },
+      "notes": "数据粒度：8 个季度符号级（OCF 全正）+ 负净利归因（非现金项）。对照场景：AEHR 负 OCF 期按失败期计入连续计数（见 fixtures/golden/s3/cases.json AEHR 项 2）。",
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-MRVL 行；docs/智能投资助手-软件规格书-v1.0.md#3.2-FR-D-04"
+    }
+  ]
+}
