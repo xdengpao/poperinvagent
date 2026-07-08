@@ -1,0 +1,47 @@
+# S3 一票否决规则（框架 v2.0 §3.2；FR-R-06；需求 R9、R5.4）
+rules:
+  - id: S3.ITEM1.ENUM
+    source: "F 3.2-1 + FR-R-06（校验 F-17 无歧义枚举）"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "任一成立即命中"
+    params:
+      # "或"枚举：机械命中条件
+      hit_any: [audit_opinion_adverse, auditor_changes_5y_ge2]
+      # 裁决路由：①监管处罚字面成立→性质分类（财务造假类?）待定性裁决；
+      # ④加严项财报重述（超框架线）→ 裁决队列而非直接淘汰
+      ruling_any: [regulatory_fraud_case, restatement_8k402]
+  - id: S3.ITEM2.CASHFLOW
+    source: "F 3.2-2"
+    type: threshold
+    effect_level: 3
+    params:
+      hit_any: [cash_conversion_lt_0_7_8q, ar_growth_gt_revenue_20pp_4q]
+  - id: S3.ITEM3.HOLDER
+    source: "F 3.2-3 + O-03（美股口径，R9.4）"
+    type: threshold
+    effect_level: 3
+    params:
+      cn_hit_all: [top_holder_pledge_gt_50pct, top_holder_sales_12m_ge2]  # A 股：且
+      us_mode: transfer_to_s4    # 美股：Form 4 单独判定，10b5-1/RSU 代扣豁免，记录转 S4 管理层维
+  - id: S3.ITEM4.MA
+    source: "F 3.2-4"
+    type: threshold
+    effect_level: 3
+    params:
+      hit_all: [ma_revenue_contribution_gt_50pct_3y, margin_below_pre_merger]  # 两条件为"且"
+  - id: S3.ITEM5.DILUTION
+    source: "F 3.2-5"
+    type: threshold
+    effect_level: 3
+    params:
+      hit_all: [per_share_metrics_no_growth_3y, revenue_growth_via_dilution]
+  - id: S3.VERDICT.FOURSTATE
+    source: "规格书 §6.2 四态输出 + FR-O-06"
+    type: classification
+    effect_level: 3
+    conservative_direction: "命中优先于边缘优先于滞留"
+    params:
+      priority: [veto, edge, stranded, pass]
+      # veto=任一项机械命中；edge=裁决路由条件成立或定性警报（→裁决队列+冻结）；
+      # stranded=取证未完成（agent_task 未闭合）；pass=五项全部有结论且未命中

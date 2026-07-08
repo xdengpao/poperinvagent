@@ -155,3 +155,6 @@ inputs 记录报告给出的层级（可以是比率本身），expected 记录�
 ## 版本
 
 fixture 一经回填冻结；勘误以新文件版本追加（`*.v2.json`）并在本 README 登记差异。
+
+### 变更登记
+- 2026-07-08：`s3/cases.json` RMBS item1 增补 `qualitative_alert` 机器字段（转录报告已有的三重法律信号→裁决建议，provenance 不变，无新数据）。

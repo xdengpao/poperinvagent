@@ -1,0 +1,56 @@
+# S4 八维评分卡（框架 v2.0 §3.3/§3.4；需求 R10）
+rules:
+  - id: S4.DIMENSIONS
+    source: "F 3.3"
+    type: classification
+    effect_level: 2
+    params:
+      # kind: quant=自动计分 | qual=代理初评+用户签认后生效（未签认不参与判定线）
+      dimensions:
+        产业链位置:   { max: 15, kind: quant, bands: { high: [13, 15], mid: [8, 12], low: [0, 7] } }
+        AI收入真实性: { max: 20, kind: quant, bands: { high: [17, 20], mid: [12, 16], low: [0, 11] } }
+        市场空间:     { max: 10, kind: quant, bands: { high: [9, 10], mid: [6, 8], low: [0, 5] } }
+        护城河:       { max: 15, kind: qual,  bands: { high: [13, 15], mid: [8, 12], low: [0, 7] } }
+        管理层:       { max: 10, kind: qual,  bands: { high: [9, 10], mid: [6, 8], low: [0, 5] } }
+        估值:         { max: 15, kind: quant, bands: { high: [13, 15], mid: [8, 12], low: [0, 7] } }
+        财务健康:     { max: 10, kind: quant, bands: { high: [9, 10], mid: [6, 8], low: [0, 5] } }
+        拥挤度:       { max: 5,  kind: quant, bands: { high: [5, 5], mid: [3, 3], low: [0, 1] } }
+  - id: S4.GAP.LOWFLOOR
+    source: "F 3.3 打分规则（R10.2）"
+    type: guard
+    effect_level: 2
+    conservative_direction: "缺失计低档下限"
+    params:
+      on_gap: low_band_floor      # 任一维缺失 → 低档下限 + 标注
+      max_gaps_for_reco: 1        # 缺失 ≥2 维 → 不得进入推荐输出
+  - id: S4.MGMT.ASSEMBLER
+    source: "F 3.3 管理层维 + O-01 决策 2（冷启动，R2.8/R10.5）"
+    type: threshold
+    effect_level: 2
+    params:
+      hit_ratio_bands: { high: 0.80, mid: 0.60 }   # 兑现率 ≥80% 高档 / 60-80 中档 / <60 低档
+      cold_start_min_quarters: 4
+      cold_start_band: mid_floor                   # 库不满 4 季 → 中档下限 + 冷启动标签
+  - id: S4.SCENARIO.LINES
+    source: "F 3.3 估值维 + 3.4 拦截（R10.3）"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "熊市线一票拦截"
+    params:
+      base_min_return: 1.00       # 基准情形 3 年隐含回报 ≥+100%
+      bear_min_return: -0.30      # 熊市情形 ≥-30%，低于则无论总分不得给出买入意见
+      peg_max_high_band: 1.5
+  - id: S4.JUDGE.LINES
+    source: "F 3.4（判定线参数由 param_signed 提供，只可上调）"
+    type: threshold
+    effect_level: 2
+    params:
+      heavy_param: score.heavy_line   # ≥75 重仓候选
+      trial_param: score.trial_line   # 65-74 小仓试探；<65 放弃
+  - id: S4.REQUALIFY.DOWNGRADE
+    source: "F 3.4 跌档处置（出处=3.4 非 7.3，校验 F-07；R10.4）"
+    type: trigger-action
+    effect_level: 3
+    params:
+      to_trial_band_action: reduce_to_trial_cap   # 跌入 65-74 → 减仓至试探仓上限以内
+      below_trial_action: sell                    # 跌破 65 → 卖出意见走第十章流程
