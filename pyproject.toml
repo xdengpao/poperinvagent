@@ -17,6 +17,7 @@ dependencies = [
 
 [project.optional-dependencies]
 app = ["fastapi>=0.110", "uvicorn>=0.27", "apscheduler>=3.10"]
+orchestration = ["prefect>=3.0"]  # P3 任务 27：调度迁移（可选；未装则降级为纯函数）
 dev = ["pytest>=8.0", "ruff>=0.4"]
 
 [tool.setuptools.packages.find]
