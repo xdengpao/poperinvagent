@@ -22,7 +22,7 @@
 | [docs/AI时代股票投资指导框架-v1.0.md](docs/AI时代股票投资指导框架-v1.0.md) | 框架 v1.0 原文（存档；v2.0 变更总览中逐条对照） |
 | [docs/框架问题审计登记表.md](docs/框架问题审计登记表.md) | 对 v1.0 的四路独立审计完整记录（117 条），v2.0 修复工作的依据 |
 
-## 代码实现（P0-P2 功能开发完成，296 测试全绿）
+## 代码实现（P0-P3 功能开发完成，318 测试全绿）
 
 ```
 src/invest_assistant/
@@ -38,15 +38,20 @@ src/invest_assistant/
   agents/       LLM 取证代理子系统（防幻觉四段链、任务幂等、执行器）
   audit/        审计哈希链 · 违规台账七类
   ui/           FastAPI（签认/裁决队列、回执、连通性、S0 准入）· 强送达通知
+  reports/      季度校准报告自动产出（P3）
+  data/…        A股接入管道 · 覆盖率复议 · 非美披露口径框架 O-03（P3）
+  orchestration/… Prefect 调度迁移 daily-calendar-flow（P3）
+frontend/         Next.js 15 前端（概览/签认/裁决/连通性四页，消费 FastAPI，P3）
 fixtures/golden/  金标准 fixture（S1 两态/S2 候选池/S3 判定/归一化六案例）+ 对抗样本
 db/migrations/    PostgreSQL schema v1（append-only 触发器实测拒改）
-tests/            296 测试：金标准回归 + 单元 + 端到端场景断言（CI 合并阻断）
+tests/            318 测试：金标准回归 + 单元 + 端到端场景断言（CI 合并阻断）
 scripts/          A3 交易代码白名单 · 业务时限 lint · 连通性自检 · 恢复演练
 ```
 
-本地运行：`pip install -e ".[dev,app]" && pytest`。四道 CI 合并阻断闸门：
-金标准回归 + 端到端场景断言 + A3 无交易执行检查 + 业务时限口径 lint。
-剩余：真实数据源联测（需生产网络 + token）、IBKR 重授权后 S4/S5 实跑、P3 持续运营。
+本地运行：`pip install -e ".[dev,app]" && pytest`；前端 `cd frontend && npm install && npm run build`。
+四道 CI 合并阻断闸门：金标准回归 + 端到端场景断言 + A3 无交易执行检查 + 业务时限口径 lint。
+剩余（均需外部条件，非编码缺口）：真实数据源联测（生产网络 + token）、IBKR 重授权后
+S4/S5 实跑、8.6 框架升级管线与 13.1 统一状态机 driver（功能已分布实现，待抽象）。
 完整实施计划见 [specs/invest-assistant/tasks.md](specs/invest-assistant/tasks.md)。
 
 ## 核心设计要点
