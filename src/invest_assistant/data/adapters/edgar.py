@@ -12,7 +12,7 @@ import datetime as _dt
 import os
 
 from .base import BaseAdapter, ProbeResult, UpstreamDown
-from .http import HttpResponse, HttpTransport, UrllibTransport
+from .http import HttpTransport, UrllibTransport
 
 HFIAA_EFFECTIVE = _dt.date(2026, 3, 18)
 _BASE_DATA = "https://data.sec.gov"

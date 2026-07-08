@@ -1,0 +1,361 @@
+{
+  "description": "防幻觉对抗样本库（R20.4）：注入编造数字/伪造来源/勾稽矛盾/缺标签/单一转述源冒充双源的代理输出样本。expect_intercept=true 的样本要求 UNVERIFIED 拦截率 100%；expected_stages 为期望拦截段（invest_assistant.agents.verify.Stage 值）；expect_ruling_queue 标记勾稽矛盾的裁决队列路由（R16.3）。draft 为 EvidenceDraft.from_dict 输入；snapshot_text 是已取回归档的原文快照（无网络调用）。",
+  "stage_values": ["source_trace", "reconciliation", "label_completeness", "corroboration"],
+  "samples": [
+    {
+      "sample_id": "ADV-01-fabricated-number",
+      "category": "编造数值：原文快照无此数（R16.2①）",
+      "expect_intercept": true,
+      "expected_stages": ["source_trace"],
+      "expect_ruling_queue": false,
+      "draft": {
+        "subject": "NVDA",
+        "field_name": "fy2025_revenue_musd",
+        "value": 138500,
+        "unit": "USD_mn",
+        "as_of": "2026-02-26",
+        "freshness_label": "fresh",
+        "basis_label": "US-GAAP/FY2025/合并口径",
+        "is_key_figure": true,
+        "agent_opinion": "营收大超预期，增长强劲（判定性语言仅存参考字段，R16.6）",
+        "statement": {},
+        "sources": [
+          {
+            "source_id": "edgar-nvda-10k-fy2025",
+            "publisher": "SEC EDGAR",
+            "tier": "official",
+            "origin_id": "NVDA-10K-FY2025",
+            "snapshot_text": "NVIDIA Corporation Annual Report: Total revenue was $130,497 million for fiscal year 2025, up 114% from the prior year."
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "ADV-02-fabricated-source",
+      "category": "伪造来源：仅元数据非空、原文快照取回为空（机械谓词拦截，R16.2①）",
+      "expect_intercept": true,
+      "expected_stages": ["source_trace"],
+      "expect_ruling_queue": false,
+      "draft": {
+        "subject": "ALAB",
+        "field_name": "q1_2026_revenue_musd",
+        "value": 5200,
+        "unit": "USD_mn",
+        "as_of": "2026-05-05",
+        "freshness_label": "fresh",
+        "basis_label": "US-GAAP/Q1-2026",
+        "is_key_figure": true,
+        "statement": {},
+        "sources": [
+          {
+            "source_id": "https://ir.example-fake.test/alab/q1-2026-results",
+            "publisher": "Astera Labs IR",
+            "tier": "official",
+            "origin_id": "",
+            "snapshot_text": ""
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "ADV-03-recon-ni-eps-shares-10x",
+      "category": "勾稽矛盾：NI÷EPS 与加权股数差 10 倍（R16.2②）",
+      "expect_intercept": true,
+      "expected_stages": ["reconciliation"],
+      "expect_ruling_queue": true,
+      "draft": {
+        "subject": "TSM",
+        "field_name": "fy2025_net_income_musd",
+        "value": 36000,
+        "unit": "USD_mn",
+        "as_of": "2026-04-15",
+        "freshness_label": "fresh",
+        "basis_label": "IFRS/FY2025/合并口径",
+        "is_key_figure": true,
+        "statement": { "net_income": 36000, "eps": 6.94, "weighted_shares": 51880 },
+        "sources": [
+          {
+            "source_id": "edgar-tsm-20f-fy2025",
+            "publisher": "SEC EDGAR",
+            "tier": "official",
+            "origin_id": "TSM-20F-FY2025",
+            "snapshot_text": "Form 20-F: Net income attributable to shareholders of the parent was $36,000 million for 2025; diluted earnings per ADR unit were $6.94; weighted average ADR units outstanding were 5,188 million."
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "ADV-04-recon-quarter-sum-vs-annual",
+      "category": "勾稽矛盾：季度加总 54,000 ≠ 年度 60,000（R16.2②）",
+      "expect_intercept": true,
+      "expected_stages": ["reconciliation"],
+      "expect_ruling_queue": true,
+      "draft": {
+        "subject": "AVGO",
+        "field_name": "fy2025_revenue_musd",
+        "value": 60000,
+        "unit": "USD_mn",
+        "as_of": "2025-12-12",
+        "freshness_label": "fresh",
+        "basis_label": "US-GAAP/FY2025（53周财年已对齐）",
+        "is_key_figure": true,
+        "statement": { "quarters": [12000, 13000, 14000, 15000], "annual": 60000 },
+        "sources": [
+          {
+            "source_id": "edgar-avgo-10k-fy2025",
+            "publisher": "SEC EDGAR",
+            "tier": "official",
+            "origin_id": "AVGO-10K-FY2025",
+            "snapshot_text": "Annual Report: Net revenue was $60,000 million for fiscal year 2025."
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "ADV-05-recon-balance-sheet-identity",
+      "category": "勾稽矛盾：资产 512,000 ≠ 负债 300,000 + 权益 180,000（代理误抽权益，R16.2②）",
+      "expect_intercept": true,
+      "expected_stages": ["reconciliation"],
+      "expect_ruling_queue": true,
+      "draft": {
+        "subject": "002371.SZ",
+        "field_name": "fy2025_total_assets_mcny",
+        "value": 512000,
+        "unit": "CNY_mn",
+        "as_of": "2026-04-28",
+        "freshness_label": "fresh",
+        "basis_label": "CAS/FY2025/合并资产负债表",
+        "is_key_figure": true,
+        "statement": { "total_assets": 512000, "total_liabilities": 300000, "total_equity": 180000 },
+        "sources": [
+          {
+            "source_id": "cninfo-002371-annual-2025",
+            "publisher": "巨潮资讯网",
+            "tier": "official",
+            "origin_id": "002371-AR-2025",
+            "snapshot_text": "年度报告：资产总计 512,000 百万元，负债合计 300,000 百万元，所有者权益合计 212,000 百万元。"
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "ADV-06-missing-freshness-label",
+      "category": "缺新鲜度标签（R16.2③，R2.1）",
+      "expect_intercept": true,
+      "expected_stages": ["label_completeness"],
+      "expect_ruling_queue": false,
+      "draft": {
+        "subject": "AMD",
+        "field_name": "q1_2026_revenue_musd",
+        "value": 8450,
+        "unit": "USD_mn",
+        "as_of": "2026-05-06",
+        "freshness_label": "",
+        "basis_label": "US-GAAP/Q1-2026/持续经营口径",
+        "is_key_figure": true,
+        "statement": {},
+        "sources": [
+          {
+            "source_id": "edgar-amd-10q-q1-2026",
+            "publisher": "SEC EDGAR",
+            "tier": "official",
+            "origin_id": "AMD-10Q-Q1-2026",
+            "snapshot_text": "Form 10-Q: Net revenue was $8,450 million for the quarter ended March 28, 2026."
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "ADV-07-missing-basis-label",
+      "category": "缺口径标签（R16.2③）",
+      "expect_intercept": true,
+      "expected_stages": ["label_completeness"],
+      "expect_ruling_queue": false,
+      "draft": {
+        "subject": "600519.SH",
+        "field_name": "fy2025_gross_margin_pct",
+        "value": 91.8,
+        "unit": "pct",
+        "as_of": "2026-04-02",
+        "freshness_label": "fresh",
+        "basis_label": "",
+        "is_key_figure": false,
+        "statement": {},
+        "sources": [
+          {
+            "source_id": "cninfo-600519-annual-2025",
+            "publisher": "巨潮资讯网",
+            "tier": "official",
+            "origin_id": "600519-AR-2025",
+            "snapshot_text": "年度报告：公司全年毛利率 91.8%，同比基本持平。"
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "ADV-08-same-wire-two-reposts",
+      "category": "单一转述源冒充双源：同一原始通稿两处转载（R16.4/R16.5④）",
+      "expect_intercept": true,
+      "expected_stages": ["corroboration"],
+      "expect_ruling_queue": false,
+      "draft": {
+        "subject": "ACME",
+        "field_name": "q2_2026_revenue_musd",
+        "value": 420,
+        "unit": "USD_mn",
+        "as_of": "2026-06-30",
+        "freshness_label": "fresh",
+        "basis_label": "US-GAAP/Q2-2026",
+        "is_key_figure": true,
+        "statement": {},
+        "sources": [
+          {
+            "source_id": "sina-finance-20260630-acme",
+            "publisher": "新浪财经",
+            "tier": "media",
+            "origin_id": "prnewswire-acme-20260630",
+            "snapshot_text": "公司新闻通稿称，二季度营收 420 百万美元。（转载）"
+          },
+          {
+            "source_id": "163-money-20260630-acme",
+            "publisher": "网易财经",
+            "tier": "media",
+            "origin_id": "prnewswire-acme-20260630",
+            "snapshot_text": "据公司通稿，ACME 二季度营收 420 百万美元。（转载）"
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "ADV-09-same-publisher-two-articles",
+      "category": "同一发布主体两篇文章冒充双源（发布主体去重，R16.4④）",
+      "expect_intercept": true,
+      "expected_stages": ["corroboration"],
+      "expect_ruling_queue": false,
+      "draft": {
+        "subject": "MRVL",
+        "field_name": "fy2027_consensus_eps_usd",
+        "value": 3.75,
+        "unit": "USD",
+        "as_of": "2026-06-20",
+        "freshness_label": "fresh",
+        "basis_label": "一致预期/FY2027/摊薄口径",
+        "is_key_figure": true,
+        "statement": {},
+        "sources": [
+          {
+            "source_id": "seekingalpha-mrvl-outlook-1",
+            "publisher": "Seeking Alpha",
+            "tier": "media",
+            "origin_id": "",
+            "snapshot_text": "Analysts model FY2027 consensus EPS of $3.75 for Marvell."
+          },
+          {
+            "source_id": "seekingalpha-mrvl-outlook-2",
+            "publisher": "Seeking Alpha",
+            "tier": "media",
+            "origin_id": "",
+            "snapshot_text": "The street consensus stands at $3.75 EPS for FY2027."
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "ADV-10-single-media-key-figure",
+      "category": "关键数字仅单一媒体来源、无官方原文（R16.5④）",
+      "expect_intercept": true,
+      "expected_stages": ["corroboration"],
+      "expect_ruling_queue": false,
+      "draft": {
+        "subject": "AEHR",
+        "field_name": "fy2026_backlog_musd",
+        "value": 1500,
+        "unit": "USD_mn",
+        "as_of": "2026-06-15",
+        "freshness_label": "fresh",
+        "basis_label": "公司口径/在手订单",
+        "is_key_figure": true,
+        "statement": {},
+        "sources": [
+          {
+            "source_id": "36kr-aehr-20260615",
+            "publisher": "36氪",
+            "tier": "media",
+            "origin_id": "",
+            "snapshot_text": "报道称 Aehr 在手订单达 1,500 百万美元。"
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "OK-11-official-single-source",
+      "category": "合法样本：官方原文 + 数值回溯命中 + 勾稽一致 + 标签齐全",
+      "expect_intercept": false,
+      "expected_stages": [],
+      "expect_ruling_queue": false,
+      "draft": {
+        "subject": "NVDA",
+        "field_name": "fy2025_revenue_musd",
+        "value": 130497,
+        "unit": "USD_mn",
+        "as_of": "2026-02-26",
+        "freshness_label": "fresh",
+        "basis_label": "US-GAAP/FY2025/合并口径",
+        "is_key_figure": true,
+        "statement": {
+          "quarters": [26044, 30040, 35082, 39331],
+          "annual": 130497,
+          "net_income": 72880,
+          "eps": 2.94,
+          "weighted_shares": 24788,
+          "total_assets": 111601,
+          "total_liabilities": 32274,
+          "total_equity": 79327
+        },
+        "sources": [
+          {
+            "source_id": "edgar-nvda-10k-fy2025",
+            "publisher": "SEC EDGAR",
+            "tier": "official",
+            "origin_id": "NVDA-10K-FY2025",
+            "snapshot_text": "NVIDIA Corporation Annual Report: Total revenue was $130,497 million for fiscal year 2025; net income was $72,880 million and diluted EPS was $2.94."
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "OK-12-two-independent-sources",
+      "category": "合法样本：两家独立发布主体（非同一通稿）双源佐证",
+      "expect_intercept": false,
+      "expected_stages": [],
+      "expect_ruling_queue": false,
+      "draft": {
+        "subject": "SNPS",
+        "field_name": "q2_2026_revenue_musd",
+        "value": 5030,
+        "unit": "USD_mn",
+        "as_of": "2026-07-02",
+        "freshness_label": "fresh",
+        "basis_label": "US-GAAP/Q2-2026",
+        "is_key_figure": true,
+        "statement": {},
+        "sources": [
+          {
+            "source_id": "reuters-snps-20260702",
+            "publisher": "Reuters",
+            "tier": "media",
+            "origin_id": "reuters-own-reporting-20260702",
+            "snapshot_text": "Synopsys reported quarterly revenue of $5,030 million, Reuters calculations show."
+          },
+          {
+            "source_id": "bloomberg-snps-20260702",
+            "publisher": "Bloomberg",
+            "tier": "media",
+            "origin_id": "bloomberg-own-reporting-20260702",
+            "snapshot_text": "Synopsys posted revenue of $5,030 million for the quarter, according to Bloomberg data."
+          }
+        ]
+      }
+    }
+  ]
+}
