@@ -1,0 +1,174 @@
+# 持仓信号监测规则（任务 20，需求 R12；框架 v2.0 §6.1/6.2/6.3/2.3-2、规格书 §6.5）
+# 6.2 六项恶化检测器 + 6.3 五项泡沫检测器 + 频率登记 + 价格触发 + 动作阈值。
+# 阈值全部在此登记（R5.1：除红线断言层外代码不硬编码），monitor.py 按 id 读取 params。
+rules:
+  # ============ 6.2 基本面恶化检测器（六项；命中任一 → 48h 复评，R12.1/R12.2） ============
+  - id: SIG62.REV_GUIDANCE
+    source: "F 6.2-①（收入连续两季显著低于指引：偏离 ≥10%）+ 规格书 §6.5（guidance_track+CONSENSUS）"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "偏离达线即计，含边界（≥）"
+    params:
+      deviation_pct_ge: 10          # 低于指引偏离 ≥10%
+      consecutive_quarters: 2       # 连续两季（框架原文口径）
+      cadence: numeric              # 财报事件 + 日收盘（R12.1）
+  - id: SIG62.GROSS_MARGIN
+    source: "F 6.2-②（毛利率非季节性下滑 ≥3pp）+ 规格书 §6.5（同季同比+环比双口径）"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "双口径任一达线即命中（同级取严，R5.3）；季节性归因成立则不计"
+    params:
+      decline_pp_ge: 3              # 非季节性下滑 ≥3pp
+      calibers: [yoy_same_quarter, qoq]   # 同季同比 + 环比双口径
+      cadence: numeric
+  - id: SIG62.KEY_CUSTOMER
+    source: "F 6.2-③（大客户流失或标志性订单被夺）+ 规格书 §6.5（代理事件取证）"
+    type: trigger-action
+    effect_level: 3
+    conservative_direction: "代理事件取证结论为命中即计（代理事件项）"
+    params:
+      proxy_evidence: agent_event   # 代理事件取证（FR-A-01 任务⑥）
+      cadence: event                # 代理周扫 + 披露事件（R12.1）
+  - id: SIG62.OCF_DIVERGENCE
+    source: "F 6.2-④（经营现金流与净利润连续 4 季背离）+ 规格书 §6.5（归一化引擎）"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "连续背离季数达线即计（≥）"
+    params:
+      divergence_quarters_ge: 4     # 连续 4 季背离（输入经 R2.4/R2.5 归一化）
+      cadence: numeric
+  - id: SIG62.AR_INVENTORY
+    source: "F 6.2-⑤（应收/存货同比增速超收入 20pp 以上）+ 规格书 §6.5（含合同资产口径开关）"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "应收/存货任一达线即命中，含边界（≥）"
+    params:
+      excess_over_revenue_pp_ge: 20 # 同比超收入 20pp
+      contract_asset_toggle: true   # 合同资产口径开关必须显式标注（R9.2 同源口径）
+      cadence: numeric
+  - id: SIG62.GOVERNANCE
+    source: "F 6.2-⑥（核心高管离职/大股东密集减持/审计异动）+ 规格书 §6.5（Form 4 聚合+8-K+代理）"
+    type: trigger-action
+    effect_level: 3
+    conservative_direction: "三子症状为'或'枚举，任一成立即命中"
+    params:
+      hit_any: [executive_departure, insider_sell_cluster, audit_anomaly]
+      cadence: event
+  # ============ 6.3 估值泡沫检测器（五项；≥2 减仓评估 / ≥3 分批兑现，R12.5） ============
+  - id: SIG63.PS_PEG
+    source: "F 6.3-①（非超高速增长公司 PS>30 或 PEG>3 持续一个季度）"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "PS/PEG 任一超线即计（'或'）；适用前提不可判定时按缺口处理不计命中（A2）"
+    params:
+      ps_gt: 30                     # PS > 30（严格大于，框架原文'>30 倍'）
+      peg_gt: 3                     # 或 PEG > 3
+      applies_below_revenue_growth_pct: 40   # 适用前提：收入增速 <40%（非超高速增长）
+      persist_quarters_ge: 1        # 持续一个季度
+      cadence: numeric
+  - id: SIG63.TAM_SHARE
+    source: "F 6.3-②（现价市值反推需占 TAM 份额 >50% 才能合理化）"
+    type: threshold
+    effect_level: 3
+    params:
+      implied_tam_share_pct_gt: 50
+      cadence: numeric
+  - id: SIG63.PRICE_VS_EARNINGS
+    source: "F 6.3-③（12 个月涨幅超盈利上修幅度 50pp 以上）"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "'50pp 以上'按含边界（≥）取严"
+    params:
+      gap_pp_ge: 50                 # 12 月涨幅 − 盈利上修幅度 ≥ 50pp
+      cadence: numeric
+  - id: SIG63.RESEARCH_DENSITY
+    source: "F 6.3-④（卖方研报密度环比翻倍且一致'买入'）+ 规格书 §6.5（研报密度=周更）"
+    type: threshold
+    effect_level: 3
+    conservative_direction: "'翻倍'按倍率 ≥2 含边界取严；两条件为'且'"
+    params:
+      density_ratio_ge: 2           # 环比翻倍
+      require_consensus_buy: true   # 且一致买入
+      cadence: research_density     # 周更（R12.1）
+  - id: SIG63.ISSUE_SELL_CONCURRENT
+    source: "F 6.3-⑤（高位定增与大股东减持并发）"
+    type: trigger-action
+    effect_level: 3
+    conservative_direction: "两事件为'且'（并发）"
+    params:
+      hit_all: [equity_offering_at_high, insider_selling_concurrent]
+      cadence: event
+  # ============ 频率登记（R12.1；规格书 §6.5 频率行） ============
+  - id: SIG.FREQ.REGISTRY
+    source: "规格书 §6.5 频率行（数值项=财报事件+日收盘；事件项=代理周扫+披露事件；研报密度=周更）"
+    type: classification
+    effect_level: 3
+    params:
+      cadences:
+        numeric: [earnings_event, daily_close]     # 数值项
+        event: [agent_weekly_scan, disclosure_event]   # 事件项（代理事件取证）
+        research_density: [weekly]                 # 研报密度
+  # ============ 动作阈值（R12.2/R12.3/R12.4/R12.5） ============
+  - id: SIG62.ACTION.REEVAL_48H
+    source: "F 6.2（命中任一 → 48 小时内完成复评）+ F 10.3（逾期未处理 → 冻结该标的加仓与组合新开仓）"
+    type: trigger-action
+    effect_level: 3
+    params:
+      reeval_window: "48h"          # 墙钟口径（R4.3），Duration.parse 解析
+      overdue_freeze: [instrument_expansive, global_new_open]   # 双冻结（R12.2）
+  - id: SIG62.ACTION.REEVAL_BINARY
+    source: "F 6.2（复评结论二选一：确认命中 3.2 红旗 → 立即清仓；证据不足确认 → 减半并观察一个季度）"
+    type: trigger-action
+    effect_level: 3
+    conservative_direction: "不存在第三选项（C-10 统一；类型层枚举强制）"
+    params:
+      confirmed_action: liquidate   # 确认 → 清仓意见（R12.3）
+      unconfirmed_action: halve_and_observe   # 不能确认 → 减半 + 观察期
+      # 框架口径"一个季度"（自然日，R4.3）——以 90 自然日落地并在此留痕注明
+      observation_window: "90d"
+  - id: SIG62.ACTION.OBSERVATION
+    source: "F 6.2（观察期内再命中任一信号 → 清仓）+ 规格书 §6.6 观察期状态行"
+    type: trigger-action
+    effect_level: 3
+    conservative_direction: "期内再命中直清仓（跳过 48h 复评，防守类，A5）；到期无命中自动解除留痕"
+    params:
+      rehit_action: liquidate_direct   # 跳过 48h 复评（R12.4）
+      expiry_action: auto_release_with_trace
+  - id: SIG63.ACTION.THRESHOLDS
+    source: "F 6.3 标题行（命中 ≥2 项 → 减仓意见评估）+ F 7.3 分批兑现行（6.3 命中 ≥3 项）"
+    type: trigger-action
+    effect_level: 3
+    params:
+      reduce_eval_hits_ge: 2        # ≥2 → 减仓评估意见（R12.5）
+      staged_take_profit_hits_ge: 3 # ≥3 → 分批兑现意见（高位吸收低位）
+  # ============ 价格触发（R12.6；按标的市场日收盘评估） ============
+  - id: PRICE.STOP_LOSS
+    source: "F 6.1 个股止损行（跌破预设止损位 → 无条件减半并 48 小时内复评）"
+    type: trigger-action
+    effect_level: 3
+    conservative_direction: "无条件减半为防守类（6.6 顺位 3，A5 不受冻结阻断）"
+    params:
+      action: unconditional_halve
+      start_reeval: "48h"           # 减半后同步启动 48h 复评倒计时
+      level_source: thesis_card     # 止损位取自论点卡预设（附录 A）
+  - id: PRICE.REREVIEW_LINE
+    source: "F 6.1 个股止损行（成本价 -20% → 强制重审）+ FR-O-02 价格触发"
+    type: trigger-action
+    effect_level: 3
+    params:
+      drawdown_from_cost_pct: 20    # 收盘 ≤ 成本价 ×(1-20%) → 强制重审任务
+      action: forced_rereview
+  - id: PRICE.BULL_TARGET_CROSS
+    source: "F 7.3 分批兑现行（现价超越三情景牛市目标价）+ FR-O-02〔校验 F-09〕"
+    type: trigger-action
+    effect_level: 3
+    params:
+      action: staged_take_profit_eval   # 上穿 → 分批兑现评估意见
+      level_source: scenario_bull       # 牛市目标价取自三情景
+  # ============ 颠覆名单联动（R12.7） ============
+  - id: DISRUPT.HOLDING_REEVAL
+    source: "F 2.3-2（被颠覆名单）+ FR-O-02（列入颠覆名单 → 持仓强制复评）"
+    type: trigger-action
+    effect_level: 3
+    params:
+      action: forced_reeval_immediate   # 持仓标的被列入 → 立即强制复评事件
