@@ -43,14 +43,33 @@ OPINION_ID_PATTERN = r"^#\d{4}-\d{2}-\d{3}$"
 
 
 class OpinionType(StrEnum):
-    """意见类型（框架 10.1 七类；P1 仅防守三类，其余四类由 P2 任务 16.1 扩展：
+    """意见类型（框架 10.1 七类，P2 任务 16.1 全量）。
 
-    买入 / 小仓试探买入 / 加仓 / 分批兑现 / 持有。
+    框架七类：买入 / 小仓试探买入 / 加仓 / 减仓 / 卖出（清仓）/ 分批兑现 / 持有。
+    其中"卖出（清仓）"按需求执行形态拆分为 SELL（R10.4 跌破 65）与 LIQUIDATE
+    （R12.3/R12.4/R13.4 证伪全额清仓）两种，映射同一框架类型。
     """
 
+    BUY = "买入"
+    TRIAL_BUY = "小仓试探买入"
+    ADD = "加仓"
     REDUCE = "减仓"
     SELL = "卖出"
     LIQUIDATE = "清仓"
+    STAGED_TAKE_PROFIT = "分批兑现"
+    HOLD = "持有"
+
+
+#: 框架 10.1 七类 → 本枚举映射（完备性断言用；卖出（清仓）对应 SELL+LIQUIDATE）
+FRAMEWORK_OPINION_TYPES: dict[str, tuple[OpinionType, ...]] = {
+    "买入": (OpinionType.BUY,),
+    "小仓试探买入": (OpinionType.TRIAL_BUY,),
+    "加仓": (OpinionType.ADD,),
+    "减仓": (OpinionType.REDUCE,),
+    "卖出（清仓）": (OpinionType.SELL, OpinionType.LIQUIDATE),
+    "分批兑现": (OpinionType.STAGED_TAKE_PROFIT,),
+    "持有": (OpinionType.HOLD,),
+}
 
 
 class OpinionStatus(StrEnum):
@@ -165,7 +184,13 @@ class OpinionNumberIssuer:
 
 
 class OpinionFactory:
-    """防守类最小意见工厂（任务 14.7）。P2 任务 16.1 在此基础上扩至全七类。"""
+    """意见工厂（任务 16.1）：框架 10.1 全七类构造器；十项字段模型层 required。
+
+    七类触发语义（10.1）在构造器中以断言落地：买入需评分 ≥ 判定线（调用方保证
+    三层漏斗与风控已过，此处校验触发上下文一致性）；小仓试探仓位 ≤ 单票初始上限
+    一半；清仓目标仓位=0。判定与放行由规则引擎/风控/S8 守卫承担（A1），本工厂
+    只负责合规构造与盖章。
+    """
 
     def __init__(
         self,
@@ -217,6 +242,42 @@ class OpinionFactory:
             generated_at=generated_at,
             opinion_id=self._issuer.issue(issued_on),
         )
+
+    # —— 扩权类三类（10.1；放行由风控/S8 守卫把关，A1）——
+
+    def buy(self, *, score_line: float | None = None, **kwargs) -> Opinion:
+        """买入意见（10.1：评分 ≥75 + 三情景达标 + 风控可容纳 + 市况非狂热 + 分批建仓）。
+
+        触发上下文一致性校验：若给出 score_line，则意见携带的总分须 ≥ 该判定线。
+        """
+        score: ScoreDetail = kwargs["score"]
+        if score_line is not None and score.total < score_line:
+            raise ValueError(f"买入意见总分 {score.total} < 判定线 {score_line}（10.1/3.4）")
+        return self._build(OpinionType.BUY, **kwargs)
+
+    def trial_buy(self, *, initial_cap_pct: float | None = None, **kwargs) -> Opinion:
+        """小仓试探买入（10.1：评分 65-74；仓位 ≤ 单票初始上限的一半）。"""
+        plan: PositionPlan = kwargs["position_plan"]
+        if initial_cap_pct is not None and plan.target_high_pct > initial_cap_pct / 2 + 1e-9:
+            raise ValueError(
+                f"小仓试探仓位 {plan.target_high_pct}% > 单票初始上限 {initial_cap_pct}% 的一半（10.1）")
+        return self._build(OpinionType.TRIAL_BUY, **kwargs)
+
+    def add(self, **kwargs) -> Opinion:
+        """加仓意见（10.1/7.3：加仓条件成立 + 冷静期与次数预算满足——由风控前置校验）。"""
+        return self._build(OpinionType.ADD, **kwargs)
+
+    # —— 兑现/持有 ——
+
+    def staged_take_profit(self, **kwargs) -> Opinion:
+        """分批兑现意见（10.1/7.3：分批兑现条件成立；R11.3 狂热档、R12.5 6.3≥3）。"""
+        return self._build(OpinionType.STAGED_TAKE_PROFIT, **kwargs)
+
+    def hold(self, **kwargs) -> Opinion:
+        """持有意见（10.1：持仓未触发任何动作条件，月度确认一次；R6.8 持有确认）。"""
+        return self._build(OpinionType.HOLD, **kwargs)
+
+    # —— 防守类三类 ——
 
     def reduce(self, **kwargs) -> Opinion:
         """减仓意见（框架 10.1/7.3 减仓行；R10.4 65-74 跌档、R12.5、R13.4 至少减半）。"""
