@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "invest-assistant"
+version = "0.1.0"
+description = "框架约束型智能投资助手（spec 三件套 P0 实现）——规则可回溯、数据可验证、无交易执行权"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.5",
+    "sqlalchemy>=2.0",
+    "psycopg[binary]>=3.1",
+    "exchange_calendars>=4.5",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+app = ["fastapi>=0.110", "uvicorn>=0.27", "apscheduler>=3.10"]
+dev = ["pytest>=8.0", "ruff>=0.4"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501"]

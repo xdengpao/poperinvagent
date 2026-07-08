@@ -1,0 +1,40 @@
+# S2 候选扫描规则（框架 v2.0 §3.5-1、§2.3-2；需求 R8）
+rules:
+  - id: S2.SOURCES.UNION
+    source: "F 3.5-1"
+    type: guard
+    effect_level: 2
+    params:
+      allowed_sources: ["seed", "graph", "user"]   # 三来源并集
+  - id: S2.LIQUIDITY
+    source: "F 3.5-1（校验 F-12 双口径）"
+    type: threshold
+    effect_level: 2
+    conservative_direction: "不达门槛拒入池"
+    params:
+      us_min_adv_usd: 10000000        # 美股 ≥$1000 万
+      cn_min_adv_cny: 100000000       # A 股 ≥¥1 亿
+      window: "20d"                   # 框架口径 20 日
+      proxy_window_allowed: "90d"     # 本期 90 日代理（G 级降级显式标注，R8.2）
+  - id: S2.DISRUPTION.REJECT
+    source: "F 2.3-2"
+    type: guard
+    effect_level: 2
+    params:
+      reject_on_hit: true             # 命中被颠覆名单拒绝入池（R8.4）
+  - id: S2.SCOPE.GROUPING
+    source: "规格书 §1.3 候选分组（校验 B-09）"
+    type: classification
+    effect_level: 2
+    params:
+      groups:
+        A: "US-full"     # 全数据口径可得 → 进 S3
+        B: "non-US"      # 非美披露源未接入 → 缓评（O-03）
+        C: "A-share"     # A 股待数据通道 → 缓评
+      deferred_groups: ["B", "C"]     # 缓评组不产生任何意见（R8.3）
+  - id: S2.MAINLINE.MATCH
+    source: "F 2.2 + S2 第 1 期排除口径"
+    type: guard
+    effect_level: 2
+    params:
+      require_mainline_in_qualified: true   # 主线归属须在入围行业内，否则排除

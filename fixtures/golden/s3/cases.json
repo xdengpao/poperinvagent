@@ -1,0 +1,1425 @@
+{
+  "period": "2026-07",
+  "cases": [
+    {
+      "symbol": "AMD",
+      "verdict": "pass",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": false,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": false,
+            "restatement_8k402": null
+          },
+          "hit": false,
+          "evidence": "EY 自 1969 连任、零执法",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-AMD 行"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": false,
+            "ar_growth_gt_revenue_20pp_4q": false
+          },
+          "hit": false,
+          "evidence": "8 季 OCF 全正且远超净利；应收增速远低于收入",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-AMD 行"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": false,
+          "evidence": "概要'全部未命中'覆盖本项；CEO 年减持 ~$2.2 亿系 10b5-1 计划内（0 买入），按美股口径不构成否决，转监控",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-AMD 行；#二、口径与流程记录-第2条"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": false,
+            "margin_below_pre_merger": null
+          },
+          "hit": false,
+          "evidence": "ZT 制造业务列终止经营未计入持续收入，增长为内生",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-AMD 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": false,
+            "revenue_growth_via_dilution": false
+          },
+          "hit": false,
+          "evidence": "回购为主股数微增 ~1%、EPS $0.53→$2.65",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-AMD 行"
+        }
+      },
+      "monitoring": [
+        "CEO 年减持 ~$2.2 亿（10b5-1 计划内，0 买入）",
+        "2025Q2 对华出口管制致 ~$8 亿存货计提"
+      ],
+      "ruling_request": null,
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-AMD 行"
+    },
+    {
+      "symbol": "AVGO",
+      "verdict": "pass",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": null,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": null,
+            "restatement_8k402": null
+          },
+          "hit": false,
+          "evidence": "概要'其余各项未命中'覆盖本项，未逐条展开",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-AVGO 行"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": null,
+            "ar_growth_gt_revenue_20pp_4q": false
+          },
+          "hit": false,
+          "evidence": "未命中；边缘监控：应收两年 2.45 倍 vs 收入 1.58 倍 + 单季 $17.5 亿应收保理——报告列为'项 2 边缘监控项'，未按命中处理",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-AVGO 行（记录与监控项列）"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": false,
+          "evidence": "概要覆盖；CEO 年内减持约个人持仓 35-40%（未见 10b5-1 披露）转监控；本期无一标的因项 3 淘汰",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-AVGO 行；#二、口径与流程记录-第2条"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": true,
+            "margin_below_pre_merger": false
+          },
+          "hit": false,
+          "evidence": "边缘-未命中：VMware 并表约占 FY23→25 收入增量 64%（>50% 命中前半），但最新半年净利率 40.1% 已回升至并表前（FY2023 39.3%）之上，'利润率低于并表前'条件不再成立（两条件为'且'关系，故项 4 未命中）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-AVGO 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": null
+          },
+          "hit": false,
+          "evidence": "概要'其余各项未命中'覆盖本项；并购负债 ~$386 亿本金转监控",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-AVGO 行"
+        }
+      },
+      "monitoring": [
+        "应收两年 2.45 倍 vs 收入 1.58 倍 + 单季 $17.5 亿应收保理——项 2 边缘监控项",
+        "并购负债 ~$386 亿本金（FY2024 起陆续再融资）",
+        "CEO 年内减持约个人持仓 35-40%（未见 10b5-1 披露）"
+      ],
+      "ruling_request": null,
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-AVGO 行"
+    },
+    {
+      "symbol": "MRVL",
+      "verdict": "pass",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": null,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": null,
+            "restatement_8k402": null
+          },
+          "hit": false,
+          "evidence": "概要'未命中'覆盖本项，未逐条展开",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-MRVL 行"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": false,
+            "ar_growth_gt_revenue_20pp_4q": false
+          },
+          "hit": false,
+          "evidence": "8 季 OCF 全正（FY24/25 GAAP 亏损系摊销/重组非现金，现金转化健康——负净利期按 OCF>0 判通过，FR-D-04 规则）；FY26Q4 应收环比 +41% 后 Q1 回落且 OCF 创新高（单期信号已消退，未达持续 4 季口径）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-MRVL 行"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": false,
+          "evidence": "概要覆盖；离任 CFO 申报出售 ~48% 持仓（$6000 万级）转监控；本期无一标的因项 3 淘汰",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-MRVL 行；#二、口径与流程记录-第2条"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": false,
+            "margin_below_pre_merger": null
+          },
+          "hit": false,
+          "evidence": "收入 +42% 内生（反而剥离汽车以太网 $25 亿）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-MRVL 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": false
+          },
+          "hit": false,
+          "evidence": "回购 ~$20 亿、股数持平",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-MRVL 行"
+        }
+      },
+      "monitoring": [
+        "FY26Q4 应收环比 +41% 后 Q1 回落且 OCF 创新高（单期信号已消退）",
+        "离任 CFO 申报出售 ~48% 持仓（$6000 万级）",
+        "CEO 曾在 $77 公开买入 $105 万",
+        "Celestial AI 并购 2720 万股增发+最高 $55 亿或有对价为未来稀释项"
+      ],
+      "ruling_request": null,
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-MRVL 行"
+    },
+    {
+      "symbol": "ALAB",
+      "verdict": "pass",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": false,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": false,
+            "restatement_8k402": null
+          },
+          "hit": false,
+          "evidence": "PwC 连任零执法",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-ALAB 行"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": false,
+            "ar_growth_gt_revenue_20pp_4q": false
+          },
+          "hit": false,
+          "evidence": "8 季 OCF 全正、FY2025 转化率 1.46；应收与收入同步",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-ALAB 行"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": false,
+          "evidence": "概要覆盖；CEO+COO 近 6 个月减持约 $2.5-3 亿（10b5-1/VC 解禁背景，机构方向为增持）转监控与 S4 管理层维扣分；本期无一标的因项 3 淘汰",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-ALAB 行；#二、口径与流程记录-第2条"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": false,
+            "margin_below_pre_merger": null
+          },
+          "hit": false,
+          "evidence": "唯一收购为技术型 tuck-in",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-ALAB 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": false
+          },
+          "hit": false,
+          "evidence": "IPO 后零增发、年稀释 2-3%（SBC）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-ALAB 行"
+        }
+      },
+      "monitoring": [
+        "CEO+COO 近 6 个月减持约 $2.5-3 亿（10b5-1/VC 解禁背景，机构方向为增持）——S4 管理层维重点扣分项"
+      ],
+      "ruling_request": null,
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-ALAB 行"
+    },
+    {
+      "symbol": "CRDO",
+      "verdict": "pass",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": false,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": false,
+            "restatement_8k402": null
+          },
+          "hit": false,
+          "evidence": "E&Y 连任 8 年零执法",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-CRDO 行"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": false,
+            "ar_growth_gt_revenue_20pp_4q": false
+          },
+          "hit": false,
+          "evidence": "FY25/26 转化率 1.25/0.98；FY2025 应收 +172% vs 收入 +126%（FY2026 已逆转，未达持续 4 季口径）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-CRDO 行"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": false,
+          "evidence": "概要覆盖；高管/创始人 12 个月减持 ~$1 亿量级（10b5-1）转监控；本期无一标的因项 3 淘汰",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-CRDO 行；#二、口径与流程记录-第2条"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": false,
+            "margin_below_pre_merger": null
+          },
+          "hit": false,
+          "evidence": "收入 +126%/+207% 全内生（DustPhotonics 在报告期外交割）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-CRDO 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": false,
+            "revenue_growth_via_dilution": false
+          },
+          "hit": false,
+          "evidence": "项 5 边缘：年稀释 8-12%、含 $7.36 亿 ATM，但摊薄每股收入两年 $1.24→$7.13 增长——'每股口径无增长'不成立，未命中",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-CRDO 行"
+        }
+      },
+      "monitoring": [
+        "FY2025 应收 +172% vs 收入 +126%（FY2026 已逆转）",
+        "高管/创始人 12 个月减持 ~$1 亿量级（10b5-1）",
+        "SBC+ATM 稀释纳入估值模型"
+      ],
+      "ruling_request": null,
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-CRDO 行"
+    },
+    {
+      "symbol": "ARM",
+      "verdict": "pass",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": false,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": false,
+            "restatement_8k402": null
+          },
+          "hit": false,
+          "evidence": "Deloitte 连任；2026-05 FTC 反垄断调查+律所调查为非会计类，不构成财务造假类命中，转监控（ADR 口径）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-ARM 行"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": false,
+            "ar_growth_gt_revenue_20pp_4q": false
+          },
+          "hit": false,
+          "evidence": "FY2025 转化率 0.50 系 IPO 税务代扣一次性（FY2026 回升 1.69，ADR 半年现金流口径）；应收+合同资产连续两年增速>收入系授权模式结构性特征，报告未按命中处理、列持续监控",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-ARM 行"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": false
+          },
+          "hit": false,
+          "evidence": "软银零减持；以 Arm 股份质押 $200 亿贷款额度（质押比例未量化——供给悬顶转监控）；ADR 内部人数据自 2026-03-18 起可得（口径记录 1）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-ARM 行；#二、口径与流程记录-第1条"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": false,
+            "margin_below_pre_merger": null
+          },
+          "hit": false,
+          "evidence": "Ampere 收购主体是软银非上市公司，非 Arm 并表",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-ARM 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": false
+          },
+          "hit": false,
+          "evidence": "IPO 全存量、零增发",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-ARM 行"
+        }
+      },
+      "monitoring": [
+        "应收+合同资产连续两年增速>收入（授权模式结构性特征，持续监控）",
+        "2026-05 FTC 反垄断调查+律所调查（非会计类）",
+        "软银零减持但以 Arm 股份质押 $200 亿贷款额度（供给悬顶）"
+      ],
+      "ruling_request": null,
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-ARM 行"
+    },
+    {
+      "symbol": "TSM",
+      "verdict": "pass",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": false,
+            "audit_opinion_adverse": false,
+            "auditor_changes_5y_ge2": false,
+            "restatement_8k402": null
+          },
+          "hit": false,
+          "evidence": "Deloitte 自 1987 连任、FY2025 清洁意见（ADR 口径）；美商务部出口管制调查（Sophgo/华为案）未定案且非财务类，转监控",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-TSM 行"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": false,
+            "ar_growth_gt_revenue_20pp_4q": false
+          },
+          "hit": false,
+          "evidence": "8 季转化率 0.94-1.73；2025 年应收增速落后收入 28pp",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-TSM 行"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": false
+          },
+          "hit": false,
+          "evidence": "国发基金 6.38% 零减持（ADR 内部人数据自 2026-03-18 起可得，口径记录 1）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-TSM 行；#二、口径与流程记录-第1条"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": false,
+            "margin_below_pre_merger": null
+          },
+          "hit": false,
+          "evidence": "零并购",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-TSM 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": false
+          },
+          "hit": false,
+          "evidence": "零增发，股本三年零变动",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-TSM 行"
+        }
+      },
+      "monitoring": [
+        "美商务部出口管制调查（Sophgo/华为案，未定案，非财务类）",
+        "国发基金 6.38% 零减持"
+      ],
+      "ruling_request": null,
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-TSM 行"
+    },
+    {
+      "symbol": "KLAC",
+      "verdict": "pass",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": false,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": false,
+            "restatement_8k402": null
+          },
+          "hit": false,
+          "evidence": "PwC 连任零执法",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-KLAC 行"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": false,
+            "ar_growth_gt_revenue_20pp_4q": false
+          },
+          "hit": false,
+          "evidence": "8 季转化率均值 ~0.98；应收无异常；2026-03 单季转化率 0.59（LTM OCF 仍 $44 亿）——下季回归验证转监控",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-KLAC 行"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": false,
+          "evidence": "概要'全部未命中'覆盖本项；内部人零买入（计划内卖出）转监控；本期无一标的因项 3 淘汰",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-KLAC 行；#二、口径与流程记录-第2条"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": false,
+            "margin_below_pre_merger": null
+          },
+          "hit": false,
+          "evidence": "近 3 年零并购（反而剥离）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-KLAC 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": false,
+            "revenue_growth_via_dilution": false
+          },
+          "hit": false,
+          "evidence": "持续缩股 -11.7%、EPS $24→$30",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-KLAC 行"
+        }
+      },
+      "monitoring": [
+        "2026-03 单季转化率 0.59（LTM 仍 $44 亿）——下季回归验证",
+        "内部人零买入（计划内卖出）"
+      ],
+      "ruling_request": null,
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-KLAC 行"
+    },
+    {
+      "symbol": "TER",
+      "verdict": "pass",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": false,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": false,
+            "restatement_8k402": null
+          },
+          "hit": false,
+          "evidence": "2021-26 零监管事件零诉讼；PwC 自 1968 连任",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-TER 行"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": false,
+            "ar_growth_gt_revenue_20pp_4q": false
+          },
+          "hit": false,
+          "evidence": "8 季 OCF/NI 全部 ≥1；应收同比与收入同步（+34% vs +32%）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-TER 行"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": false
+          },
+          "hit": false,
+          "evidence": "12 个月 0 买 28 卖全部 10b5-1 常规——按美股口径（口径记录 2）计划内减持不构成否决",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-TER 行（记录与监控项列）；#二、口径与流程记录-第2条"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": false,
+            "margin_below_pre_merger": null
+          },
+          "hit": false,
+          "evidence": "增长内生（Quantifi $1.27 亿不重大、反而剥离 DIS）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-TER 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": false
+          },
+          "hit": false,
+          "evidence": "三年净缩股 -7%",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-TER 行"
+        }
+      },
+      "monitoring": [
+        "12 个月 0 买 28 卖全部 10b5-1 常规（期间股价 $106→$460——S4 拥挤度维输入）"
+      ],
+      "ruling_request": null,
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-TER 行"
+    },
+    {
+      "symbol": "FORM",
+      "verdict": "pass",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": false,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": null,
+            "restatement_8k402": null
+          },
+          "hit": false,
+          "evidence": "零 SEC/BIS 事件（仅 2023 年 EPA 环保罚款 $25.8 万，非财务类）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-FORM 行"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": false,
+            "ar_growth_gt_revenue_20pp_4q": false
+          },
+          "hit": false,
+          "evidence": "8 季 OCF 全正；应收 +34% vs 收入 +32% 同步",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-FORM 行"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": false,
+          "evidence": "概要'全部未命中'覆盖本项；2026 年高管计划内卖出、零买入转监控；本期无一标的因项 3 淘汰",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-FORM 行；#二、口径与流程记录-第2条"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": false,
+            "margin_below_pre_merger": null
+          },
+          "hit": false,
+          "evidence": "近 3 年零并表收购（两笔剥离）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-FORM 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": false
+          },
+          "hit": false,
+          "evidence": "回购缩股 ~-1%/年",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-FORM 行"
+        }
+      },
+      "monitoring": [
+        "2025-08 CFO 更替（内部升任）",
+        "2026 年高管计划内卖出、零买入"
+      ],
+      "ruling_request": null,
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-通过（10只）表-FORM 行"
+    },
+    {
+      "symbol": "MPWR",
+      "verdict": "veto",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": false,
+            "audit_opinion_adverse": true,
+            "auditor_changes_5y_ge2": false,
+            "restatement_8k402": true
+          },
+          "hit": true,
+          "evidence": "命中路径逐条：①restatement_8k402=true：2026-02-26 Item 4.02 非依赖公告——FY2024 年报及 2025 全部季报不再可依赖，FY2024 净利下修 $1.946 亿（递延税差错）；②audit_opinion_adverse=true：FY2025 10-K ICFR 否定意见（adverse）+ 重大缺陷——框架 3.2-1'审计意见为否定'字面成立（ICFR 口径）；③auditor_changes_5y_ge2=false：20 年审计师 Deloitte 随即被 EY 更换（2026-06 股东会批准）——5 年窗口内单次更换未达 ≥2 次阈值，作为红旗链条成分记录；④regulatory_fraud_case=false：报告未载监管立案/处罚；证券集体诉讼（私诉）2026-05 大部分驳回动议未获支持、进入证据开示，法官认定'高管股票交易时点与金额可支持主观故意推断'，CEO 近 6 个月 45 笔卖出约 $2.4 亿、零买入——列为财务造假嫌疑红旗链条，非监管处罚。→ 项 1 经 audit_opinion_adverse 字面成立，叠加重述与诉讼，无需裁决直接淘汰",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-MPWR 行"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": null,
+            "ar_growth_gt_revenue_20pp_4q": null
+          },
+          "hit": null,
+          "evidence": "报告未涉及（项 1 命中即淘汰，其余项未出判定）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-MPWR 行"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": null,
+          "evidence": "报告未涉及（CEO 6 个月 45 笔卖出约 $2.4 亿计入项 1 红旗链条，非项 3 判定）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-MPWR 行"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": null,
+            "margin_below_pre_merger": null
+          },
+          "hit": null,
+          "evidence": "报告未涉及",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-MPWR 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": null
+          },
+          "hit": null,
+          "evidence": "报告未涉及",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-MPWR 行"
+        }
+      },
+      "monitoring": [],
+      "ruling_request": null,
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-MPWR 行"
+    },
+    {
+      "symbol": "SNPS",
+      "verdict": "veto",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": null,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": null,
+            "restatement_8k402": null
+          },
+          "hit": false,
+          "evidence": "项 1 边缘、未构成命中：2025-09 单日 -36% 后证券集体诉讼（索赔期 2024-12~2025-09，私诉）；2021 年 BIS 华为/中芯传票未见结论（缺口，regulatory_fraud_case 无法定判故记 null）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-SNPS 行"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": null,
+            "ar_growth_gt_revenue_20pp_4q": null
+          },
+          "hit": null,
+          "evidence": "报告未涉及（项 4 命中即淘汰）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-SNPS 行"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": null,
+          "evidence": "报告未涉及",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-SNPS 行"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": true,
+            "margin_below_pre_merger": true
+          },
+          "hit": true,
+          "evidence": "命中路径逐条：①ma_revenue_contribution_gt_50pct_3y=true：Ansys 并表（2025-07-17 起）占 FY2025 收入增量约 82%（>50%），剔除后内生增速仅约 +1~5%（推算）；②margin_below_pre_merger=true：GAAP 营业利润率 22.1%→13.0%、净利率 23.5%→18.9%→FY2026 季度 0.8-2.7%，显著低于并表前。佐证：并购负债 $100 亿票据+$43 亿贷款、增发 ~3030 万股（稀释 +20%）。→ 项 4 两条件同时字面成立，淘汰。附注：属单次战略并购而非连环并购，若细则应豁免此类情形，修订须走框架版本升级流程，本期按现行规则执行",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-SNPS 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": null
+          },
+          "hit": null,
+          "evidence": "报告未涉及（并购融资的增发 ~3030 万股计入项 4 证据，非项 5 判定）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-SNPS 行"
+        }
+      },
+      "monitoring": [],
+      "ruling_request": null,
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-SNPS 行"
+    },
+    {
+      "symbol": "AEHR",
+      "verdict": "veto",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": false,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": null,
+            "restatement_8k402": null
+          },
+          "hit": false,
+          "evidence": "2024 年证券集体诉讼史（已撤诉）——私诉且已撤诉，记录为叠加信号，未构成项 1 命中",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-AEHR 行"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": true,
+            "ar_growth_gt_revenue_20pp_4q": null
+          },
+          "hit": true,
+          "evidence": "命中路径：经营现金流持续为负——FY2025 全年 -$740 万、FY2026 前 9 月 -$510 万（约 7 个季度负现金流），同期连续净亏损；按 FR-D-04 负净利期规则 OCF≤0 逐期计'失败期'进入连续计数（报告按项 2 命中处理，期数为报告原文'约 7 个季度'口径）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-AEHR 行"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": false,
+          "evidence": "2026-04 CEO（$1070 万）/CTO/创始人/多名董事在 52 周高点附近集中减持——记录为叠加信号；第一大股东质押/减持阈值未认定，本期无一标的因项 3 淘汰（口径记录 2）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-AEHR 行；#二、口径与流程记录-第2条"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": null,
+            "margin_below_pre_merger": null
+          },
+          "hit": null,
+          "evidence": "报告未涉及",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-AEHR 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": true,
+            "revenue_growth_via_dilution": true
+          },
+          "hit": true,
+          "evidence": "命中路径逐条：①per_share_metrics_no_growth_3y=true：收入下滑期（FY26Q3 同比 -43.7%）——'收入无增长'字面成立；②revenue_growth_via_dilution=true：于 2026-04 签订并 10 天内用尽 $6000 万 ATM 增发（此前另有 $25M ATM 使用记录）——'依赖增发融资'字面成立。→ 项 2 + 项 5 组合，淘汰",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-AEHR 行"
+        }
+      },
+      "monitoring": [
+        "客户集中度曾达单一客户 79%（记录项）"
+      ],
+      "ruling_request": null,
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-否决（3只）表-AEHR 行"
+    },
+    {
+      "symbol": "NVDA",
+      "verdict": "edge",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": true,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": null,
+            "restatement_8k402": null
+          },
+          "hit": null,
+          "evidence": "2022-05 与 SEC 和解 $550 万（FY2018 未披露挖矿收入驱动，证券法 17(a)(2)/(3) 过失性披露条款，不认不否，非造假指控）——落在 5 年窗口内，字面命中'近 5 年被监管处罚'（regulatory_fraud_case 字面=true）；但性质为披露控制缺陷而非造假。项级判定待裁决 D-1：①视同命中（淘汰，2027-05 窗口滚出后自动复审）；②裁定'非财务造假类且已了结'不构成命中（进入 S4，和解事项转论点卡风险项）。裁决前冻结于 S3 出口（口径记录 3）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-1 行；#二、口径与流程记录-第3条"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": null,
+            "ar_growth_gt_revenue_20pp_4q": false
+          },
+          "hit": false,
+          "evidence": "其余四项全绿：8 季 DSO 稳定 45-54 天",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-1 行"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": false,
+          "evidence": "其余四项全绿（概要覆盖，未逐条展开）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-1 行"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": false,
+            "margin_below_pre_merger": null
+          },
+          "hit": false,
+          "evidence": "其余四项全绿：增长内生",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-1 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": false
+          },
+          "hit": false,
+          "evidence": "其余四项全绿：$40B 级回购缩股",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-1 行"
+        }
+      },
+      "monitoring": [
+        "DOJ/法国/欧盟/中国四项反垄断调查在途",
+        "对客户的循环投资（$15.9B 单季股权收益）与前三客户占应收 64% 转 S4"
+      ],
+      "ruling_request": "D-1",
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-1 行"
+    },
+    {
+      "symbol": "CDNS",
+      "verdict": "edge",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": true,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": false,
+            "restatement_8k402": null
+          },
+          "hit": null,
+          "evidence": "2025-07 与 DOJ/BIS 和解：认罪'共谋违反出口管制'（2015-2021 经中国子公司向国防科大关联方售 $4530 万产品），净罚没 $1.406 亿——字面存在 5 年窗口内监管处罚（regulatory_fraud_case 字面=true），报告定性'非财务造假类监管处罚'，处罚定性待裁决 D-2；PwC 连任无审计异动。项级判定=暂停：裁决处罚定性 + 待第 2 期补齐其余四项证据后合并判定；裁决前冻结于 S3 出口（口径记录 3）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-2 行；#二、口径与流程记录-第3条"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": null,
+            "ar_growth_gt_revenue_20pp_4q": null
+          },
+          "hit": null,
+          "evidence": "取证代理中断，列滞留；待第 2 期补齐后与 D-2 裁决合并判定",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-2 行"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": null,
+          "evidence": "取证代理中断，列滞留；待第 2 期补齐后与 D-2 裁决合并判定",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-2 行"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": null,
+            "margin_below_pre_merger": null
+          },
+          "hit": null,
+          "evidence": "取证代理中断，列滞留；待第 2 期补齐后与 D-2 裁决合并判定",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-2 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": null
+          },
+          "hit": null,
+          "evidence": "取证代理中断，列滞留；待第 2 期补齐后与 D-2 裁决合并判定",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-2 行"
+        }
+      },
+      "monitoring": [],
+      "ruling_request": "D-2",
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-2 行"
+    },
+    {
+      "symbol": "RMBS",
+      "verdict": "edge",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": null,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": null,
+            "restatement_8k402": null
+          },
+          "hit": null,
+          "evidence": "2026 上半年三重信号叠加：财报暴跌 -13% 后证券欺诈律所调查（或已立案，细节缺口）+ 2026Q1 10-Q 披露 DOJ 反垄断刑事大陪审团传票 + CFO 离职 + 回购暂停。系统建议：暂缓一季观察（等 2026Q2 10-Q 与诉讼立案情况明朗），不淘汰不放行；亦可裁决直接进入 S4（信号转论点卡证伪条件）。裁决前冻结于 S3 出口（口径记录 3）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-3 行；#二、口径与流程记录-第3条"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": false,
+            "ar_growth_gt_revenue_20pp_4q": null
+          },
+          "hit": false,
+          "evidence": "历史财务质量健康：8 季转化率 ≥0.94",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-3 行"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": null,
+          "evidence": "报告未涉及",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-3 行"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": false,
+            "margin_below_pre_merger": null
+          },
+          "hit": false,
+          "evidence": "历史财务质量健康：零并购",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-3 行"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": false
+          },
+          "hit": false,
+          "evidence": "历史财务质量健康：净缩股",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-3 行"
+        }
+      },
+      "monitoring": [
+        "2026Q2 10-Q 与证券欺诈诉讼立案情况（暂缓一季观察的复核条件）",
+        "CFO 离职",
+        "回购暂停"
+      ],
+      "ruling_request": "D-3",
+      "stranded_reason": null,
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-待用户裁决（3只）表-D-3 行"
+    },
+    {
+      "symbol": "AIP",
+      "verdict": "stranded",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": null,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": null,
+            "restatement_8k402": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": null,
+            "ar_growth_gt_revenue_20pp_4q": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": null,
+            "margin_below_pre_merger": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        }
+      },
+      "monitoring": [],
+      "ruling_request": null,
+      "stranded_reason": "取证代理因会话额度限制中断（额度 17:50 UTC 重置）；按框架'数据不足不推荐'不进入 S4，第 2 期增补审查补齐后逐只出判定",
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+    },
+    {
+      "symbol": "INTC",
+      "verdict": "stranded",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": null,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": null,
+            "restatement_8k402": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": null,
+            "ar_growth_gt_revenue_20pp_4q": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": null,
+          "evidence": "部分证据已有：新 CEO $2500 万自购兑现并持有、CFO 财报暴跌日买入 $25 万（方向为买入）；判定待第 2 期补齐",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": null,
+            "margin_below_pre_merger": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": null
+          },
+          "hit": null,
+          "evidence": "部分证据已有：政府 9.9% 入股与英伟达 $50 亿入股的增发稀释需项 5 重点核算（第 2 期）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        }
+      },
+      "monitoring": [
+        "新 CEO $2500 万自购兑现并持有",
+        "CFO 财报暴跌日买入 $25 万",
+        "政府 9.9% 入股与英伟达 $50 亿入股的增发稀释（项 5 重点核算项）"
+      ],
+      "ruling_request": null,
+      "stranded_reason": "取证代理因会话额度限制中断（额度 17:50 UTC 重置）；按框架'数据不足不推荐'不进入 S4，第 2 期增补审查补齐后逐只出判定",
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+    },
+    {
+      "symbol": "MU",
+      "verdict": "stranded",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": null,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": null,
+            "restatement_8k402": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": null,
+            "ar_growth_gt_revenue_20pp_4q": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": null,
+            "margin_below_pre_merger": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        }
+      },
+      "monitoring": [],
+      "ruling_request": null,
+      "stranded_reason": "取证代理因会话额度限制中断（额度 17:50 UTC 重置）；按框架'数据不足不推荐'不进入 S4，第 2 期增补审查补齐后逐只出判定",
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+    },
+    {
+      "symbol": "AMKR",
+      "verdict": "stranded",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": null,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": null,
+            "restatement_8k402": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": null,
+            "ar_growth_gt_revenue_20pp_4q": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": null,
+            "margin_below_pre_merger": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        }
+      },
+      "monitoring": [],
+      "ruling_request": null,
+      "stranded_reason": "取证代理因会话额度限制中断（额度 17:50 UTC 重置）；按框架'数据不足不推荐'不进入 S4，第 2 期增补审查补齐后逐只出判定",
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+    },
+    {
+      "symbol": "COHR",
+      "verdict": "stranded",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": null,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": null,
+            "restatement_8k402": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": null,
+            "ar_growth_gt_revenue_20pp_4q": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": null,
+            "margin_below_pre_merger": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        }
+      },
+      "monitoring": [],
+      "ruling_request": null,
+      "stranded_reason": "取证代理因会话额度限制中断（额度 17:50 UTC 重置）；按框架'数据不足不推荐'不进入 S4，第 2 期增补审查补齐后逐只出判定",
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+    },
+    {
+      "symbol": "AMAT",
+      "verdict": "stranded",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": null,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": null,
+            "restatement_8k402": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": null,
+            "ar_growth_gt_revenue_20pp_4q": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": null,
+            "margin_below_pre_merger": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        }
+      },
+      "monitoring": [],
+      "ruling_request": null,
+      "stranded_reason": "取证代理因会话额度限制中断（额度 17:50 UTC 重置）；按框架'数据不足不推荐'不进入 S4，第 2 期增补审查补齐后逐只出判定",
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+    },
+    {
+      "symbol": "LRCX",
+      "verdict": "stranded",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": null,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": null,
+            "restatement_8k402": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": null,
+            "ar_growth_gt_revenue_20pp_4q": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": null,
+            "margin_below_pre_merger": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        }
+      },
+      "monitoring": [],
+      "ruling_request": null,
+      "stranded_reason": "取证代理因会话额度限制中断（额度 17:50 UTC 重置）；按框架'数据不足不推荐'不进入 S4，第 2 期增补审查补齐后逐只出判定",
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+    },
+    {
+      "symbol": "ASML",
+      "verdict": "stranded",
+      "items": {
+        "item1": {
+          "conditions": {
+            "regulatory_fraud_case": null,
+            "audit_opinion_adverse": null,
+            "auditor_changes_5y_ge2": null,
+            "restatement_8k402": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item2": {
+          "conditions": {
+            "cash_conversion_lt_0_7_8q": null,
+            "ar_growth_gt_revenue_20pp_4q": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item3": {
+          "conditions": {
+            "top_holder_pledge_gt_50pct": null,
+            "top_holder_sales_12m_ge2": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审；ADR 内部人数据自 2026-03-18 起可得，口径记录 1）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段；#二、口径与流程记录-第1条"
+        },
+        "item4": {
+          "conditions": {
+            "ma_revenue_contribution_gt_50pct_3y": null,
+            "margin_below_pre_merger": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        },
+        "item5": {
+          "conditions": {
+            "per_share_metrics_no_growth_3y": null,
+            "revenue_growth_via_dilution": null
+          },
+          "hit": null,
+          "evidence": "取证代理因会话额度中断，证据未齐（第 2 期补审）",
+          "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+        }
+      },
+      "monitoring": [],
+      "ruling_request": null,
+      "stranded_reason": "取证代理因会话额度限制中断（额度 17:50 UTC 重置）；按框架'数据不足不推荐'不进入 S4，第 2 期增补审查补齐后逐只出判定",
+      "provenance": "docs/S3-一票否决审查-第1期-2026-07-07.md#一、判定总表-审查未完成滞留（8只）段"
+    }
+  ],
+  "expected_tally": {
+    "pass": 10,
+    "veto": 3,
+    "edge": 3,
+    "stranded": 8
+  }
+}

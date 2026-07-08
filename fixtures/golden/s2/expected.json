@@ -1,0 +1,73 @@
+{
+  "group_A": [
+    "NVDA", "AMD", "AVGO", "MRVL", "ALAB", "CRDO", "ARM", "RMBS", "AIP", "MPWR",
+    "TSM", "INTC", "MU", "AMKR", "COHR",
+    "AMAT", "LRCX", "KLAC", "ASML", "TER", "FORM", "AEHR", "SNPS", "CDNS"
+  ],
+  "group_B": [
+    "000660.KS", "005930.KS", "8035.T", "6857.T", "6146.T", "6920.T",
+    "042700.KS", "BESI", "ASM International", "VACN.SW", "CAMT",
+    "3711.TW", "3443.TW", "3661.TW", "2454.TW", "5274.TW"
+  ],
+  "group_C": [
+    "300308", "300502", "002371", "688012", "688256", "688041", "688008"
+  ],
+  "excluded": [
+    {
+      "symbol": "GOOGL",
+      "reason_class": "mainline-mismatch",
+      "provenance": "docs/S2-候选池-第1期-2026-07-07.md#四-排除记录表"
+    },
+    {
+      "symbol": "AMZN",
+      "reason_class": "mainline-mismatch",
+      "provenance": "docs/S2-候选池-第1期-2026-07-07.md#四-排除记录表"
+    },
+    {
+      "symbol": "VRT",
+      "reason_class": "mainline-mismatch",
+      "provenance": "docs/S2-候选池-第1期-2026-07-07.md#四-排除记录表"
+    },
+    {
+      "symbol": "ANET",
+      "reason_class": "mainline-mismatch",
+      "provenance": "docs/S2-候选池-第1期-2026-07-07.md#四-排除记录表"
+    },
+    {
+      "symbol": "AMBA",
+      "reason_class": "mainline-mismatch",
+      "note": "边缘/车载算力不在算力芯片主线口径（数据中心训练+推理）内；主线归属待框架细则修订时重议（归类留痕）",
+      "provenance": "docs/S2-候选池-第1期-2026-07-07.md#四-排除记录表"
+    },
+    {
+      "symbol": "MBLY",
+      "reason_class": "mainline-mismatch",
+      "note": "边缘/车载算力不在算力芯片主线口径（数据中心训练+推理）内；主线归属待框架细则修订时重议（归类留痕）",
+      "provenance": "docs/S2-候选池-第1期-2026-07-07.md#四-排除记录表"
+    },
+    {
+      "symbol": "9660",
+      "reason_class": "mainline-mismatch",
+      "note": "地平线（HK）；边缘/车载算力不在算力芯片主线口径内；主线归属待框架细则修订时重议（归类留痕）",
+      "provenance": "docs/S2-候选池-第1期-2026-07-07.md#四-排除记录表"
+    },
+    {
+      "symbol": "SMCI",
+      "reason_class": "mainline-mismatch",
+      "provenance": "docs/S2-候选池-第1期-2026-07-07.md#四-排除记录表"
+    },
+    {
+      "symbol": "DELL",
+      "reason_class": "mainline-mismatch",
+      "provenance": "docs/S2-候选池-第1期-2026-07-07.md#四-排除记录表"
+    },
+    {
+      "symbol": "CRWV",
+      "reason_class": "mainline-mismatch",
+      "provenance": "docs/S2-候选池-第1期-2026-07-07.md#四-排除记录表"
+    }
+  ],
+  "disruption_new": [],
+  "notes": "A 组 24 只（算力芯片链 15 + 半导体设备与材料链 9）进入 S3；B 组 16 只非美上市缓评（数据不足不推荐【F 3.2/3.5】，披露源接入前不进入 S3/S4；CAMT 可转 A 组）；C 组 7 只 A 股待 TUSHARE_TOKEN 接入后补跑；被 AI 颠覆名单三判据扫描无命中，本期新增：无。排除表'SMCI / DELL / CRWV 等'的'等'未列名，仅登记三只具名标的。",
+  "provenance": "docs/S2-候选池-第1期-2026-07-07.md#一-A组 + #二-B组 + #三-C组 + #四-排除记录 + #五-被AI颠覆名单核对"
+}

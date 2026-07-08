@@ -1,0 +1,44 @@
+# 部署形态：单机四容器（规格书 §2.3，design §2.2）
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: invest
+      POSTGRES_USER: invest
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?必须显式提供}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/migrations:/docker-entrypoint-initdb.d:ro
+      - parquet:/warehouse            # Parquet 冷层卷
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U invest"]
+      interval: 10s
+      retries: 6
+
+  app:
+    build: .
+    command: uvicorn invest_assistant.ui.app:app --host 0.0.0.0 --port 8000
+    environment: &appenv
+      DATABASE_URL: postgresql+psycopg://invest:${DB_PASSWORD}@db:5432/invest
+      MODE: ${MODE:-production}       # production 下核心源探测失败拒绝意见模式（R1.2）
+    depends_on:
+      db: { condition: service_healthy }
+    ports: ["8000:8000"]
+
+  scheduler:
+    build: .
+    command: python -m invest_assistant.orchestration.scheduler
+    environment: *appenv
+    depends_on:
+      db: { condition: service_healthy }
+
+  agent-runner:                        # 与判定进程物理隔离（A1），只有 evidence 写入通道
+    build: .
+    command: python -m invest_assistant.agents.runner
+    environment: *appenv
+    depends_on:
+      db: { condition: service_healthy }
+
+volumes:
+  pgdata:
+  parquet:

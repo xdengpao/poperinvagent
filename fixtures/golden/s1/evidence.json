@@ -1,0 +1,479 @@
+{
+  "period": "2026-07",
+  "cutoff_date": "2026-07-07",
+  "note": "F2 对算力芯片/半导体设备与材料转录裁决 A 之前的原始档位（第二节 F2 证据表原文即为 4 档，未被裁决改写）；裁决后状态见 rulings.json 与 expected.json。评分总表中该两格标 †（5），脚注注明'初版打分为 4'。",
+  "industries": [
+    {
+      "industry": "算力芯片",
+      "factors": [
+        {
+          "factor": "F1",
+          "name": "结构性趋势",
+          "grade": 5,
+          "approx": false,
+          "gap": false,
+          "basis": "台积电 2026 年 5 月营收同比 +30.1%（单月历史新高）、Q1'26 美元营收 +40.6%；四大云厂商 2026 年 capex 合计约 $725B（同比 +77%）且全部上调指引；AI 加速器相关收入增速普遍 >50%（博通 AI 半导体收入单季 $8.4B、同比 +140%，IBKR 主题证据，须财报二次确认口径）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F1表-算力芯片行"
+        },
+        {
+          "factor": "F2",
+          "name": "盈利动能与预期修正",
+          "grade": 4,
+          "approx": false,
+          "gap": false,
+          "basis": "S&P 500 信息技术板块 Q2'26 EPS 估计 3/31→6/30 上调 +8.7%（11 个行业第二），'上调主要由半导体驱动'；美光 FY26 一致 EPS $34.26→$58.05、NVDA 季度 $1.93→$2.08；半导体与设备行业正面指引家数最多（FactSet 截至 2026-06-30）。半导体专项修正 % 无免费单列数→按可证实的 +8.7% 取 4 档（上修 3-10%），不外推给 5。[本条为裁决 A 前原始档位；裁决 A 将 F2 修订为 5（22→23），见 rulings.json]",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F2表-算力芯片行"
+        },
+        {
+          "factor": "F3",
+          "name": "相对强度",
+          "grade": 5,
+          "approx": false,
+          "gap": false,
+          "basis": "代理 SMH（VanEck 半导体 ETF）6M 收益 +55.3%，超额 +39.9pp（基准 QQQ +15.35%；IBKR 实测 2026-01-09→2026-07-06，6 个月收盘价）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F3表-算力芯片行"
+        },
+        {
+          "factor": "F4",
+          "name": "估值历史分位",
+          "grade": 3,
+          "approx": true,
+          "gap": false,
+          "basis": "半导体 TTM P/E 42.1 低于 3 年均值 54.2；NVDA 前瞻 21.7x vs 5 年均值 72x；NDX 前瞻 22.8x ≈ 10 年均值 22.9x；SOX 十年前瞻分位序列无免费源→近似取中位档 3（F4 证据表'算力芯片 / 设备'合并行）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F4表-算力芯片设备行"
+        },
+        {
+          "factor": "F5",
+          "name": "宏观适配",
+          "grade": 2,
+          "approx": false,
+          "gap": false,
+          "basis": "全行业统一：10 年期 TIPS 实际收益率约 2.25%（2026-07 初）vs 12 个月前 1.985%（2025-07-24 拍卖），上行约 +25~30bp（未达 0 分档的 >100bp）；美联储 2026-06-17 暂停于 3.50-3.75% 且基调转鹰→中性偏紧，统一取 2",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F5节"
+        },
+        {
+          "factor": "F6",
+          "name": "政策地缘",
+          "grade": 3,
+          "approx": false,
+          "gap": false,
+          "basis": "2026-01 BIS 落地对华放松框架（H200 级开闸、25% 关税、50% 数量上限；Blackwell 仍禁）；近 3 个月为执行层收紧（许可跟随最终母公司、关闭外资在华 fab 漏洞）→管制体制仍在、边际放松，中性",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F6表-算力芯片行"
+        }
+      ]
+    },
+    {
+      "industry": "半导体设备与材料",
+      "factors": [
+        {
+          "factor": "F1",
+          "name": "结构性趋势",
+          "grade": 4,
+          "approx": false,
+          "gap": false,
+          "basis": "下游驱动强劲（云 capex +77%、台积电扩产），但设备商自身收入增速本期未取到直接数据，以下游 capex 代理→保守取 4",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F1表-半导体设备行"
+        },
+        {
+          "factor": "F2",
+          "name": "盈利动能与预期修正",
+          "grade": 4,
+          "approx": false,
+          "gap": false,
+          "basis": "同算力芯片（同属'半导体与半导体设备'行业口径）：IT 板块 +8.7% 且主要由半导体驱动、美光/NVDA 一致预期上调、正面指引家数最多；专项修正 % 无单列数→取 4 档。[本条为裁决 A 前原始档位；裁决 A 将 F2 修订为 5（20→21，入围），见 rulings.json]",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F2表-半导体设备行"
+        },
+        {
+          "factor": "F3",
+          "name": "相对强度",
+          "grade": 5,
+          "approx": false,
+          "gap": false,
+          "basis": "无纯设备 ETF，用三大设备商等权篮子：AMAT +96.8% / LRCX +60.4% / KLAC +66.7%（等权篮子 +74.6%），超额 +59.3pp；KLAC 数据窗起点为 01-05（其余 01-09），偏差 <1 周，已标注",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F3表-半导体设备行"
+        },
+        {
+          "factor": "F4",
+          "name": "估值历史分位",
+          "grade": 3,
+          "approx": true,
+          "gap": false,
+          "basis": "同算力芯片（F4 证据表'算力芯片 / 设备'合并行）：半导体 TTM P/E 42.1 vs 3 年均值 54.2；SOX 十年前瞻分位序列无免费源→近似取中位档 3",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F4表-算力芯片设备行"
+        },
+        {
+          "factor": "F5",
+          "name": "宏观适配",
+          "grade": 2,
+          "approx": false,
+          "gap": false,
+          "basis": "全行业统一：实际利率温和上行 +25~30bp、美联储偏鹰暂停→中性偏紧，统一取 2",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F5节"
+        },
+        {
+          "factor": "F6",
+          "name": "政策地缘",
+          "grade": 2,
+          "approx": false,
+          "gap": false,
+          "basis": "对华设备出口管制持续，BIS 关闭外资在华晶圆厂漏洞、商务部酝酿针对中国芯片制造商进一步动作→存在直接管制约束（裁决 B 拟议 2→3 未被采用，维持保守打分）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F6表-半导体设备行"
+        }
+      ]
+    },
+    {
+      "industry": "电力、能源与基础设施",
+      "factors": [
+        {
+          "factor": "F1",
+          "name": "结构性趋势",
+          "grade": 3,
+          "approx": false,
+          "gap": false,
+          "basis": "IEA 数据中心用电年增 +17%（<25% 档线）；运营商 EPS CAGR 指引 6-8%；设备端（Vertiv 在手订单 $15B 等）更快但行业整体口径取 10-25% 档",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F1表-电力行"
+        },
+        {
+          "factor": "F2",
+          "name": "盈利动能与预期修正",
+          "grade": 4,
+          "approx": false,
+          "gap": false,
+          "basis": "方向温和上调：Q1'26 财报普遍超预期（WEC $2.45 vs 预期 $2.30、PSEG、Entergy）；Entergy 上调 2027/2029 指引 +$0.20/+$0.50；美国公用事业 2026-30 capex 预测升至约 $1.3 万亿（S&P Global 2026-04）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F2表-电力行"
+        },
+        {
+          "factor": "F3",
+          "name": "相对强度",
+          "grade": 3,
+          "approx": false,
+          "gap": false,
+          "basis": "代理 GRID，6M 收益 +20.1%，超额 +4.8pp",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F3表-电力基础设施行"
+        },
+        {
+          "factor": "F4",
+          "name": "估值历史分位",
+          "grade": 2,
+          "approx": false,
+          "gap": false,
+          "basis": "公用事业前瞻 18.2-22.3x vs 25 年区间 10-23x（中位 16.8）、10 年均值 18.75→区间中上沿，60-80% 分位档",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F4表-电力行"
+        },
+        {
+          "factor": "F5",
+          "name": "宏观适配",
+          "grade": 2,
+          "approx": false,
+          "gap": false,
+          "basis": "全行业统一：实际利率温和上行 +25~30bp、美联储偏鹰暂停→中性偏紧，统一取 2",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F5节"
+        },
+        {
+          "factor": "F6",
+          "name": "政策地缘",
+          "grade": 3,
+          "approx": false,
+          "gap": false,
+          "basis": "无本期引证的重大政策变化→中性（F6 表'其余六行业'行）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F6表-其余六行业行"
+        }
+      ]
+    },
+    {
+      "industry": "云计算与数据中心",
+      "factors": [
+        {
+          "factor": "F1",
+          "name": "结构性趋势",
+          "grade": 4,
+          "approx": false,
+          "gap": false,
+          "basis": "云厂商 capex +77%；IEA《Electricity 2026》：2025 年全球数据中心用电 +17%、AI 专用 +50%，2026 年总用电将破 1,000 TWh；云收入整体增速 20-30%→渗透率上升、TAM 年增 25-50% 档",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F1表-云与数据中心行"
+        },
+        {
+          "factor": "F2",
+          "name": "盈利动能与预期修正",
+          "grade": 3,
+          "approx": true,
+          "gap": false,
+          "basis": "无云专项修正数；参照 S&P 500 整体 +3.4%（3/31→6/30，近 5 年季均为 -2.0%）与四大云厂商盈利态势→中性偏上，取 3（近似口径）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F2表-云与数据中心行"
+        },
+        {
+          "factor": "F3",
+          "name": "相对强度",
+          "grade": 2,
+          "approx": false,
+          "gap": false,
+          "basis": "代理 SKYY，6M 收益 +6.7%，超额 -8.7pp",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F3表-云与数据中心行"
+        },
+        {
+          "factor": "F4",
+          "name": "估值历史分位",
+          "grade": 3,
+          "approx": true,
+          "gap": false,
+          "basis": "以 NDX 前瞻 22.8x ≈ 10 年均值为近似→3",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F4表-云与数据中心行"
+        },
+        {
+          "factor": "F5",
+          "name": "宏观适配",
+          "grade": 2,
+          "approx": false,
+          "gap": false,
+          "basis": "全行业统一：实际利率温和上行 +25~30bp、美联储偏鹰暂停→中性偏紧，统一取 2",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F5节"
+        },
+        {
+          "factor": "F6",
+          "name": "政策地缘",
+          "grade": 3,
+          "approx": false,
+          "gap": false,
+          "basis": "无本期引证的重大政策变化→中性（F6 表'其余六行业'行）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F6表-其余六行业行"
+        }
+      ]
+    },
+    {
+      "industry": "网络安全",
+      "factors": [
+        {
+          "factor": "F1",
+          "name": "结构性趋势",
+          "grade": 3,
+          "approx": false,
+          "gap": false,
+          "basis": "CRWD ARR +24%（内生）、PANW +31%（含并购）→行业增速 10-25%~30% 档",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F1表-网络安全行"
+        },
+        {
+          "factor": "F2",
+          "name": "盈利动能与预期修正",
+          "grade": 3,
+          "approx": true,
+          "gap": false,
+          "basis": "CRWD FQ1'27 ARR +24%、上调全年净新增 ARR 预期；PANW 收入 +31%（含并购）；无行业级修正 %→中性 3（方向偏正但不外推）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F2表-网络安全行"
+        },
+        {
+          "factor": "F3",
+          "name": "相对强度",
+          "grade": 4,
+          "approx": false,
+          "gap": false,
+          "basis": "代理 CIBR，6M 收益 +28.1%，超额 +12.7pp",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F3表-网络安全行"
+        },
+        {
+          "factor": "F4",
+          "name": "估值历史分位",
+          "grade": 2,
+          "approx": false,
+          "gap": false,
+          "basis": "CRWD EV/收入 TTM 30.5 vs 上市以来中位 24.65（高 24%）；PANW NTM 11.3x vs 5 年区间 9.5-14.4 中上——60-80% 档（与框架 2.2'估值长期偏高'一致）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F4表-网络安全行"
+        },
+        {
+          "factor": "F5",
+          "name": "宏观适配",
+          "grade": 2,
+          "approx": false,
+          "gap": false,
+          "basis": "全行业统一：实际利率温和上行 +25~30bp、美联储偏鹰暂停→中性偏紧，统一取 2",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F5节"
+        },
+        {
+          "factor": "F6",
+          "name": "政策地缘",
+          "grade": 3,
+          "approx": false,
+          "gap": false,
+          "basis": "无本期引证的重大政策变化→中性（F6 表'其余六行业'行）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F6表-其余六行业行"
+        }
+      ]
+    },
+    {
+      "industry": "AI 软件与应用",
+      "factors": [
+        {
+          "factor": "F1",
+          "name": "结构性趋势",
+          "grade": 3,
+          "approx": false,
+          "gap": false,
+          "basis": "AI 应用收入高增长（Alphabet 生成式 AI 产品收入同比 +~400%、微软 Copilot 1500 万付费席位）但行业整体（SaaS）增速 10-25% 且面临替代双向性",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F1表-AI软件行"
+        },
+        {
+          "factor": "F2",
+          "name": "盈利动能与预期修正",
+          "grade": 2,
+          "approx": false,
+          "gap": false,
+          "basis": "SaaS 承压：软件与服务类自 2025-10 峰值市值蒸发约 $2 万亿；2026-04-23 ServiceNow/IBM 财报后软件股暴跌（SNOW +22% 超预期仍 -18%）；多家投行下调目标价/评级；软件 EPS 修正约 -6%~-8%（该数低置信度，已标注）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F2表-AI软件行"
+        },
+        {
+          "factor": "F3",
+          "name": "相对强度",
+          "grade": 0,
+          "approx": false,
+          "gap": false,
+          "basis": "代理 IGV，6M 收益 -9.7%，超额 -25.1pp（实测得 0 分，非数据缺口）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F3表-AI软件行"
+        },
+        {
+          "factor": "F4",
+          "name": "估值历史分位",
+          "grade": 5,
+          "approx": false,
+          "gap": false,
+          "basis": "云软件中位 EV/NTM 收入 3.6-4.1x（2026-02），'处于 10 年最低位附近'（Clouded Judgement，明确分位表述）→ <20% 分位",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F4表-AI软件行"
+        },
+        {
+          "factor": "F5",
+          "name": "宏观适配",
+          "grade": 2,
+          "approx": false,
+          "gap": false,
+          "basis": "全行业统一：实际利率温和上行 +25~30bp、美联储偏鹰暂停→中性偏紧，统一取 2",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F5节"
+        },
+        {
+          "factor": "F6",
+          "name": "政策地缘",
+          "grade": 3,
+          "approx": false,
+          "gap": false,
+          "basis": "无本期引证的重大政策变化→中性（F6 表'其余六行业'行）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F6表-其余六行业行"
+        }
+      ]
+    },
+    {
+      "industry": "机器人与自动化",
+      "factors": [
+        {
+          "factor": "F1",
+          "name": "结构性趋势",
+          "grade": 2,
+          "approx": false,
+          "gap": false,
+          "basis": "Optimus Gen3 千台级产线作业、2026 夏启动量产但初期产量'很慢'、2027 夏高产量——收入尚未放量，商业化早期",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F1表-机器人行"
+        },
+        {
+          "factor": "F2",
+          "name": "盈利动能与预期修正",
+          "grade": 0,
+          "approx": false,
+          "gap": true,
+          "basis": "无行业一致预期修正数据→缺口按框架【F 3.1】计 0 分并标注（⚠缺）；待付费预期源或成分股级自算（M12 P1 项）后重评",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F2表-机器人行"
+        },
+        {
+          "factor": "F3",
+          "name": "相对强度",
+          "grade": 1,
+          "approx": false,
+          "gap": false,
+          "basis": "代理 BOTZ，6M 收益 +0.1%，超额 -15.3pp",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F3表-机器人行"
+        },
+        {
+          "factor": "F4",
+          "name": "估值历史分位",
+          "grade": 0,
+          "approx": false,
+          "gap": true,
+          "basis": "无历史估值序列→缺口计 0（⚠缺，F4 表'机器人 / 垂直'合并行）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F4表-机器人垂直行"
+        },
+        {
+          "factor": "F5",
+          "name": "宏观适配",
+          "grade": 2,
+          "approx": false,
+          "gap": false,
+          "basis": "全行业统一：实际利率温和上行 +25~30bp、美联储偏鹰暂停→中性偏紧，统一取 2",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F5节"
+        },
+        {
+          "factor": "F6",
+          "name": "政策地缘",
+          "grade": 3,
+          "approx": false,
+          "gap": false,
+          "basis": "无本期引证的重大政策变化→中性（F6 表'其余六行业'行）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F6表-其余六行业行"
+        }
+      ]
+    },
+    {
+      "industry": "垂直行业 AI",
+      "factors": [
+        {
+          "factor": "F1",
+          "name": "结构性趋势",
+          "grade": 0,
+          "approx": false,
+          "gap": true,
+          "basis": "行业级渗透率/收入聚合数据未取得→缺口计 0（⚠缺）；该主线本身异质性高（框架 2.2'颠覆双向'），低分方向合理",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F1表-垂直行业AI行"
+        },
+        {
+          "factor": "F2",
+          "name": "盈利动能与预期修正",
+          "grade": 1,
+          "approx": false,
+          "gap": false,
+          "basis": "医疗保健板块 Q2'26 EPS 修正 -15.3%（11 行业最大下修，FactSet）——以医疗为主代理口径",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F2表-垂直行业AI行"
+        },
+        {
+          "factor": "F3",
+          "name": "相对强度",
+          "grade": 0,
+          "approx": false,
+          "gap": false,
+          "basis": "无净化代理指数，弱代理篮子（AI 制药/AI 诊断/教育科技各一）：RXRX -15.0% / TEM -8.4% / DUOL -26.6%（篮子 -16.7%），超额 -32.0pp；代理质量低，仅供本因子参考（实测得 0 分，非数据缺口）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F3表-垂直行业AI行"
+        },
+        {
+          "factor": "F4",
+          "name": "估值历史分位",
+          "grade": 0,
+          "approx": false,
+          "gap": true,
+          "basis": "无历史估值序列→缺口计 0（⚠缺，F4 表'机器人 / 垂直'合并行）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F4表-机器人垂直行"
+        },
+        {
+          "factor": "F5",
+          "name": "宏观适配",
+          "grade": 2,
+          "approx": false,
+          "gap": false,
+          "basis": "全行业统一：实际利率温和上行 +25~30bp、美联储偏鹰暂停→中性偏紧，统一取 2",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F5节"
+        },
+        {
+          "factor": "F6",
+          "name": "政策地缘",
+          "grade": 3,
+          "approx": false,
+          "gap": false,
+          "basis": "无本期引证的重大政策变化→中性（F6 表'其余六行业'行）",
+          "provenance": "docs/S1-行业闸门扫描-第1期-2026-07-07.md#二-逐因子证据链-F6表-其余六行业行"
+        }
+      ]
+    }
+  ]
+}

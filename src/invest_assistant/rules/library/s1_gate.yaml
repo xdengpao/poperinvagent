@@ -1,0 +1,36 @@
+# S1 行业闸门规则（框架 v2.0 §3.1；需求 R7）
+rules:
+  - id: S1.GATE.LINE
+    source: "F 3.1"
+    type: threshold
+    effect_level: 2
+    params:
+      gate_line: 21        # 总分 ≥21 入围
+      top_n: 5             # 且排名前 5
+      min_qualified_no_padding: true   # 达标不足不凑数（R7.2）
+  - id: S1.FACTOR.GAP_ZERO
+    source: "F 3.1 数据缺失条款"
+    type: guard
+    effect_level: 2
+    conservative_direction: "缺失计 0"
+    params:
+      on_gap: 0            # 任一因子证据缺失/过期计 0 分并生成缺口对象（R7.1）
+  - id: S1.APPROX.SENSITIVITY
+    source: "F 3.1 + 校验 C-11（近似口径纪律）"
+    type: guard
+    effect_level: 2
+    params:
+      # 近似口径（≈）档位按 ±1 档不确定性计：总分 - 近似因子数×1 低于入围线
+      # → 依赖近似分压线 → 敏感性警报 + 待裁决而非直接入围（R7.3）。
+      # 本期已有用户裁决覆盖该行业时，压线状态视为已人工裁定（裁决 A 的机制化）。
+      approx_may_not_push_over_line: true
+      approx_uncertainty_notches: 1
+      ruling_clears_sensitivity: true
+  - id: S1.FACTOR.GRADE_RANGE
+    source: "F 3.1"
+    type: assertion
+    effect_level: 2
+    params:
+      min: 0
+      max: 5
+      factor_count: 6

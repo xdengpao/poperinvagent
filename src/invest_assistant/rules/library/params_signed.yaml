@@ -1,0 +1,78 @@
+# 参数定义与签署值（《个人参数表》主表 v1.1，2026-07-07 签署；框架附录 E）
+# direction: up_only=只可上调 | down_only=只可下调 | fixed=红线不可调
+params:
+  - name: score.heavy_line          # 评分判定线：重仓候选
+    default: 75
+    signed: 75
+    direction: up_only
+    source: "F 3.4 / 附录 E"
+  - name: score.trial_line          # 小仓试探下限
+    default: 65
+    signed: 65
+    direction: up_only
+    source: "F 3.4 / 附录 E"
+  - name: position.initial_max_pct  # 单票初始仓位上限 %
+    default: 10
+    signed: 10
+    direction: down_only
+    source: "F 6.1"
+  - name: position.initial_max_pct_smallcap
+    default: 5
+    signed: 5
+    direction: down_only
+    source: "F 6.1 / 4.3"
+  - name: position.hard_cap_pct     # 单票硬顶 %
+    default: 20
+    signed: 20
+    direction: down_only
+    source: "F 6.1"
+  - name: position.redline_pct      # 单票绝对红线 %（不可调）
+    default: 25
+    signed: 25
+    direction: fixed
+    source: "F 附录 D-3"
+  - name: leverage                  # 杠杆（不可调）
+    default: 0
+    signed: 0
+    direction: fixed
+    source: "F 附录 D-1"
+  - name: cash.floor_normal_pct     # 现金下限：常态 %
+    default: 15
+    signed: 15
+    direction: up_only
+    source: "F 6.1"
+  - name: cash.floor_overheat_pct   # 过热 %
+    default: 30
+    signed: 30
+    direction: up_only
+    source: "F 6.4"
+  - name: risk.budget_pct           # 单票风险预算：首批×止损距离 ≤ 净值 %
+    default: 2
+    signed: 2
+    direction: down_only
+    source: "F 6.1"
+  - name: trades.monthly_max        # 月最大主动交易次数
+    default: 6
+    signed: 6
+    direction: down_only
+    source: "F 6.5-4"
+  - name: swaps.annual_max          # 年主动换股次数
+    default: 6
+    signed: 6
+    direction: down_only
+    source: "F 4.1 / 7.3"
+  - name: portfolio.max_holdings    # 持仓只数上限
+    default: 8
+    signed: 8
+    direction: down_only
+    source: "F 4.1"
+  - name: reco.list_multiplier      # 推荐清单 = 持仓上限 × 150%
+    default: 1.5
+    signed: 1.5
+    direction: down_only
+    source: "F 3.5-4"
+  - name: nav.base_usd              # 组合净值基数（2026-07-07 填报）
+    default: 400000
+    signed: 400000
+    direction: down_only            # 仅用于绝对金额换算展示；调整走填报流程
+    source: "个人参数表 v1.1 第五节"
