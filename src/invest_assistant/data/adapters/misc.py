@@ -189,10 +189,25 @@ class IbkrAdapter(BaseAdapter):
 
 
 class CninfoAdapter(BaseAdapter):
-    """ADP-CNINFO：巨潮 D2/D4 原文归档（任务 24 本体，P0 仅探测占位，R1.2 全清单要求）。"""
+    """ADP-CNINFO：巨潮 D2/D4 原文归档（任务 24 本体，R1.1/R8.3）。
+
+    fetch(kind='announcements')：按股票代码+分类+日期范围查询公告列表，
+    每条登记标题/披露时间/PDF 指针+内容哈希（PDF 正文归档为冷层指针，
+    evidence 存指针；正文数字须回溯原文二次确认后方可用于否决/评分——G）。
+    """
 
     name = "ADP-CNINFO"
     required_in_production = True
+    _QUERY_URL = "http://www.cninfo.com.cn/new/hisAnnouncement/query"
+    _HOST = "http://static.cninfo.com.cn/"
+
+    #: 巨潮公告分类码（D4 否决项证据相关）
+    CATEGORY = {
+        "audit": "category_shgqigd_szsh",     # 审计/年报口径
+        "pledge": "category_gqbg_szsh",        # 股权变动/质押
+        "placement": "category_zf_szsh",       # 增发/定增
+        "periodic": "category_ndbg_szsh;category_bndbg_szsh",  # 年报/半年报
+    }
 
     def __init__(self, transport: HttpTransport | None = None):
         self._t = transport or UrllibTransport(self.rate_limit)
@@ -206,7 +221,38 @@ class CninfoAdapter(BaseAdapter):
             return ProbeResult(adapter=self.name, ok=False, error=str(e))
 
     def fetch(self, request: dict) -> list[dict]:
-        raise NotImplementedError("巨潮原文归档在 P3 任务 24 实现（探测先行，tasks.md 4.1）")
+        kind = request.get("kind", "announcements")
+        if kind != "announcements":
+            raise ValueError(f"CNINFO 不支持的请求类型：{kind}")
+        from .http import urlencode
+
+        params = {
+            "stock": request["stock"],           # 如 "300308,gssz"（代码,板块）
+            "tabName": "fulltext",
+            "category": self.CATEGORY.get(request.get("category", "periodic"),
+                                          request.get("category", "")),
+            "seDate": request.get("date_range", ""),
+            "pageSize": str(request.get("page_size", 30)),
+            "pageNum": str(request.get("page_num", 1)),
+        }
+        r = self._t.request("POST", self._QUERY_URL,
+                            data=urlencode(params).encode(),
+                            headers={"Content-Type": "application/x-www-form-urlencoded"})
+        if r.status != 200:
+            raise UpstreamDown(f"CNINFO 公告查询 {request['stock']}: HTTP {r.status}")
+        doc = r.json()
+        out: list[dict] = []
+        for ann in doc.get("announcements") or []:
+            adjunct = ann.get("adjunctUrl", "")
+            out.append({
+                "title": ann.get("announcementTitle", ""),
+                "announced_at": ann.get("announcementTime"),  # 毫秒时间戳
+                "pdf_pointer": (self._HOST + adjunct) if adjunct else "",
+                "sec_code": ann.get("secCode"),
+                "content_hash": "",  # 正文归档后由归档器回填（PDF 下载在冷层任务）
+                "caliber_note": "巨潮原文；关键数字须回溯 PDF 二次确认方可用于否决/评分（G）",
+            })
+        return out
 
 
 def build_default_registry(transport: HttpTransport | None = None):
