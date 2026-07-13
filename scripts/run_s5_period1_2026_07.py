@@ -28,7 +28,9 @@ from invest_assistant.rules import load_params, load_rules
 
 ON = dt.date(2026, 7, 13)
 SIGNOFF_ID = "SIGNOFF-2026-07-S4P1"  # docs/签认记录-S4定性维与估值口径-2026-07.md
-NEXT_EARNINGS_NVDA = None  # 官宣财报日待取证回填；None → 有效期 90 天封顶（R14.2/FR-D-08）
+# NVDA FY27Q2 财报日：第三方日历 2026-08-26（TipRanks 等，非官方一手——G 级标注）；
+# 取用使有效期更短（更保守），官宣后复核（R14.2：有效期 = min(财报日, 90 天)）
+NEXT_EARNINGS_NVDA = dt.date(2026, 8, 26)
 rules, params = load_rules(), load_params()
 
 # ---------- 1. 签认落地：S4 复算（signed_off 生效） ----------
@@ -94,21 +96,29 @@ for sym, c in sorted(cards.items(), key=lambda kv: -kv[1].total_counted):
           + ("（熊市拦截）" if BEAR_INTERCEPT.get(sym) else ""))
 
 # ---------- 2. 市况分级（R11） ----------
-# 读数依据（每项来源+日期见 docs/S5 报告§二；hit=None 为缺口）
+# 读数依据（每项来源+日期见 docs/S5 报告§二；hit=None 为缺口，A2 不计命中）
 REGIME_READINGS = [
-    SignalReading("REGIME.SIG.INDEX_PS_PEG", None),           # 指数 PS/PEG 权威口径缺
-    SignalReading("REGIME.SIG.INDEX_TAM_IMPLIED", None),      # D7 反推口径缺
-    SignalReading("REGIME.SIG.INDEX_GAIN_VS_REVISION", None,  # 由代理数据回填
-                  evidence_id="EV-SOX-12M"),
+    SignalReading("REGIME.SIG.INDEX_PS_PEG", None),           # 指数级 PS/PEG 权威口径未获得（缺口）
+    SignalReading("REGIME.SIG.INDEX_TAM_IMPLIED", None),      # D7 反推口径未接入（缺口）
+    # 涨幅腿 IBKR 一手：SOX 12月 +131.2%；上修腿多源 +8.6%~20% → 剪刀差 ≥111pp ≫ 50pp
+    SignalReading("REGIME.SIG.INDEX_GAIN_VS_REVISION", True, evidence_id="EV-SOX-12M-IBKR"),
+    # 评级极值腿成立（板块 60% 强买/NVDA 36买1持0卖）；密度环比翻倍腿未找到 → 缺口
+    # ⚠ 若密度腿后续证实 → 命中数 5 → 狂热档（暂停新开仓）——已登记核证任务
     SignalReading("REGIME.SIG.RESEARCH_CONSENSUS_EXTREME", None),
-    SignalReading("REGIME.SIG.IPO_PLACEMENT_SURGE", None),
-    SignalReading("REGIME.SIG.REAL_RATE_SPIKE", None),
-    SignalReading("REGIME.SIG.CREDIT_SPREAD_WIDENING", None),
-    SignalReading("REGIME.SIG.CB_TIGHTENING", None),
-    SignalReading("REGIME.SIG.BREADTH_DETERIORATION", None),
-    SignalReading("REGIME.SIG.MARGIN_DEBT_PCTILE", None),
+    # H1'26 IPO 募资 $1141-1156 亿 vs 上年同期 $148 亿（7-8 倍）；SK 海力士 $265 亿纪录
+    SignalReading("REGIME.SIG.IPO_PLACEMENT_SURGE", True, evidence_id="EV-IPO-H1-2026"),
+    # 边际：DFII10 3.7 月窗口年化 ≈+127bp（>100）/5.7 月窗口 ≈+96bp（<100），
+    # 规则库 conservative_direction="更早命中" → 计命中（级别对此判读不敏感：3或4项均过热）
+    SignalReading("REGIME.SIG.REAL_RATE_SPIKE", True, evidence_id="EV-DFII10-2026H1"),
+    SignalReading("REGIME.SIG.CREDIT_SPREAD_WIDENING", False),  # HY OAS 3月反而收窄 42-50bp
+    # Fed 2026-06-17 连续第4次按兵不动、QT 已于 2025-12 结束；点阵图上修/删宽松措辞为
+    # 鹰派前兆，但未达枚举事件类（加息启动/QT宣布/明确收紧声明）→ 不命中（列观察）
+    SignalReading("REGIME.SIG.CB_TIGHTENING", False),
+    SignalReading("REGIME.SIG.BREADTH_DETERIORATION", False),   # 新高/新低比 >1（349/154 等快照）
+    # 2026-05 融资余额 $1.416 万亿名义新高；/GDP 4.1% vs 50年中位 1.5%；同比 +53.7%
+    SignalReading("REGIME.SIG.MARGIN_DEBT_PCTILE", True, evidence_id="EV-FINRA-2026-05"),
 ]
-CAPEX_DOWNGRADE = None   # 头部云 capex 指引：由代理数据回填
+CAPEX_DOWNGRADE = False  # MSFT/GOOGL/META/AMZN 全部上修或维持（合计 $7250 亿 +77%），零下修
 INDEX_DRAWDOWN = round(12967.16 / 14655.29 - 1, 4)  # SOX 自高点回撤（IBKR 一手）
 
 grader = RegimeGrader(rules)
